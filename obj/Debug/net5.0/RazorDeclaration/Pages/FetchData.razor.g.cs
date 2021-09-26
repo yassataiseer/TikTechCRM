@@ -13,20 +13,6 @@ namespace TikTechCRM.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "/Users/yassa/TikTechCRM/_Imports.razor"
-using System.Net.Http;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 2 "/Users/yassa/TikTechCRM/_Imports.razor"
-using System.Net.Http.Json;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
 #line 3 "/Users/yassa/TikTechCRM/_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
@@ -82,6 +68,48 @@ using TikTechCRM.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 57 "/Users/yassa/TikTechCRM/Pages/FetchData.razor"
+using System.Net.Http;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 58 "/Users/yassa/TikTechCRM/Pages/FetchData.razor"
+using System.Text;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 59 "/Users/yassa/TikTechCRM/Pages/FetchData.razor"
+using System.Net.Http.Json;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 60 "/Users/yassa/TikTechCRM/Pages/FetchData.razor"
+using System.Web;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 61 "/Users/yassa/TikTechCRM/Pages/FetchData.razor"
+using Newtonsoft.Json.Linq;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 62 "/Users/yassa/TikTechCRM/Pages/FetchData.razor"
+using Newtonsoft.Json;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/fetchdata")]
     public partial class FetchData : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -91,13 +119,33 @@ using TikTechCRM.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 37 "/Users/yassa/TikTechCRM/Pages/FetchData.razor"
-       
+#line 66 "/Users/yassa/TikTechCRM/Pages/FetchData.razor"
+
     private WeatherForecast[] forecasts;
+    private List<orderData> UserData = new();
 
     protected override async Task OnInitializedAsync()
     {
         forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
+                using var client = new HttpClient();
+
+
+            var result = await client.GetStringAsync("https://ticktechapi.pythonanywhere.com/");
+
+            JArray data = JArray.Parse(result);
+            foreach (dynamic obj in data){
+                    UserData.Add(new orderData(){
+                    Address = obj.Address,
+                    Description  = obj.Description, 
+                    Item = obj.Item, 
+                    Latitude = obj.Latitude, 
+                    Longitude = obj.Longitude, 
+                    Name = obj.Name, 
+                    Price = obj.Price
+                });
+            }
+            StateHasChanged();
+    
     }
 
     public class WeatherForecast
@@ -110,10 +158,22 @@ using TikTechCRM.Shared;
 
         public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
     }
+    public class orderData{
+        public string Address { get; set; }
+        public string Description { get; set; }
+        public string Item { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
+        public string Name { get; set; }
+        public double Price { get; set; }
+}
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime JsRuntime { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager UriHelper { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavManager { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient Http { get; set; }
     }
 }

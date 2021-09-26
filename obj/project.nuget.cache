@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "RabDg5U5hieWW3KCGEIxizHOlOeLKv8qbbU/PhFftZ7qTFoJhrdrC+M6BQoSmzNPG+aMCX53NsByDH+FmLwnxg==",
+  "dgSpecHash": "zcXk1QT9Ca6qusS379nN9BGyPWHL8cr9OAuXu4jvQ9yUyb47b2fWySLGcFw8MYdJn/rkQo7CG1GmhYDVwaGURQ==",
   "success": true,
   "projectFilePath": "/Users/yassa/TikTechCRM/TikTechCRM.csproj",
   "expectedPackageFiles": [
@@ -28,6 +28,7 @@
     "/Users/yassa/.nuget/packages/microsoft.extensions.primitives/5.0.0/microsoft.extensions.primitives.5.0.0.nupkg.sha512",
     "/Users/yassa/.nuget/packages/microsoft.jsinterop/5.0.5/microsoft.jsinterop.5.0.5.nupkg.sha512",
     "/Users/yassa/.nuget/packages/microsoft.jsinterop.webassembly/5.0.5/microsoft.jsinterop.webassembly.5.0.5.nupkg.sha512",
+    "/Users/yassa/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512",
     "/Users/yassa/.nuget/packages/system.io.pipelines/5.0.1/system.io.pipelines.5.0.1.nupkg.sha512",
     "/Users/yassa/.nuget/packages/system.net.http.json/5.0.0/system.net.http.json.5.0.0.nupkg.sha512",
     "/Users/yassa/.nuget/packages/microsoft.netcore.app.runtime.browser-wasm/5.0.5/microsoft.netcore.app.runtime.browser-wasm.5.0.5.nupkg.sha512"

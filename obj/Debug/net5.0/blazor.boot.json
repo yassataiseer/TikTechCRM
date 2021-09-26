@@ -29,6 +29,7 @@
       "Microsoft.Extensions.Primitives.dll": "sha256-f2PgoftqEkKRuuiAk6S1MHygOuqZBHzB0HOB3vR93TU=",
       "Microsoft.JSInterop.dll": "sha256-Giz1JvBiSQH0QF96qODveJMip7exQTDFunFNTkGgPsc=",
       "Microsoft.JSInterop.WebAssembly.dll": "sha256-w0G2c9HerfjA2TOs+L4Ufnrt9MsR8b+nLA5\/yt+ytxg=",
+      "Newtonsoft.Json.dll": "sha256-cs8pHUurDt0IqbB8YXPh560au3q3J\/1wRL9jBddRVmE=",
       "System.IO.Pipelines.dll": "sha256-3ET+mpR7F058YRj9YaLHOVXBqOW6iUxtIpeiKPYw4PA=",
       "Microsoft.CSharp.dll": "sha256-CzBnrOQe+hf4qsqTuvJx2drZH7UgIouYaXG0I5cexAI=",
       "Microsoft.VisualBasic.Core.dll": "sha256-l6pYs841V7Trp06g9oDDtGIEbl3YPxXL4uZjstGRJh8=",
@@ -195,11 +196,11 @@
       "mscorlib.dll": "sha256-aRw41w\/QxOqc3NzhbK7UKf1zT6z\/oHtp9BlXl4JWwjM=",
       "netstandard.dll": "sha256-stWPH7tpmfc4JFroiKGKWcPfLQ+ALD6yQUXA9NiV0fQ=",
       "System.Private.CoreLib.dll": "sha256-PbMTdb+kswRpFmuD8S4hY70nkZ9LeYJg7y3wm7hj0CQ=",
-      "TikTechCRM.dll": "sha256-fci53huPHgl7KasWtI3iIOZMCtWRjn+3OZIrHxTg34o="
+      "TikTechCRM.dll": "sha256-bK1d7KiZUWU2+zI9aA\/\/sfuoqH6yszsx\/fNtaU12yMk="
     },
     "lazyAssembly": null,
     "pdb": {
-      "TikTechCRM.pdb": "sha256-rmOHaK22uLt+yIV0cwlPAWDekcRwkMs98Udj2HgjJ44="
+      "TikTechCRM.pdb": "sha256-za0keam83wZlzhGy9XYS2P4VtuBQgus88wkBFcvggRc="
     },
     "runtime": {
       "dotnet.timezones.blat": "sha256-SQvzbzBfueaAxSKIKE1khBH02NH2MJJaWDBav\/S5MSs=",

@@ -630,3 +630,6 @@
 /Users/yassa/TikTechCRM/obj/Debug/net5.0/TikTechCRM.dll
 /Users/yassa/TikTechCRM/obj/Debug/net5.0/ref/TikTechCRM.dll
 /Users/yassa/TikTechCRM/obj/Debug/net5.0/TikTechCRM.pdb
+/Users/yassa/TikTechCRM/bin/Debug/net5.0/wwwroot/_framework/Newtonsoft.Json.dll.gz
+/Users/yassa/TikTechCRM/bin/Debug/net5.0/wwwroot/_framework/Newtonsoft.Json.dll
+/Users/yassa/TikTechCRM/obj/Debug/net5.0/build-gz/TWhpqUMH.gz

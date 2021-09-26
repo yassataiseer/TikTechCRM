@@ -32,14 +32,63 @@ else
             }
         </tbody>
     </table>
+    @foreach (var specificData in UserData)
+{
+<div class="card">
+<div class="container">
+    <h2><u><b>@specificData.Name</b></u></h2>
+    <h6><b>The Address is:</b> @specificData.Address</h6>
+    <h6><b>The Item is:</b> @specificData.Item</h6>
+    <h6><b>The Price is:</b> @specificData.Price</h6>
+    
+    <h6><b>The Description is:</b> @specificData.Description</h6>
+        <div class="wrapper">
+
+    </div>
+</div>
+    <br>
+
+</div>
+<br>
+}
 }
 
 @code {
+    @using System.Net.Http
+    @using System.Text 
+    @using System.Net.Http.Json
+    @using System.Web
+    @using Newtonsoft.Json.Linq
+    @using Newtonsoft.Json
+    @inject NavigationManager NavManager
+    @inject NavigationManager UriHelper
+    @inject IJSRuntime JsRuntime;
+
     private WeatherForecast[] forecasts;
+    private List<orderData> UserData = new();
 
     protected override async Task OnInitializedAsync()
     {
         forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
+                using var client = new HttpClient();
+
+
+            var result = await client.GetStringAsync("https://ticktechapi.pythonanywhere.com/");
+
+            JArray data = JArray.Parse(result);
+            foreach (dynamic obj in data){
+                    UserData.Add(new orderData(){
+                    Address = obj.Address,
+                    Description  = obj.Description, 
+                    Item = obj.Item, 
+                    Latitude = obj.Latitude, 
+                    Longitude = obj.Longitude, 
+                    Name = obj.Name, 
+                    Price = obj.Price
+                });
+            }
+            StateHasChanged();
+    
     }
 
     public class WeatherForecast
@@ -52,4 +101,13 @@ else
 
         public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
     }
+    public class orderData{
+        public string Address { get; set; }
+        public string Description { get; set; }
+        public string Item { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
+        public string Name { get; set; }
+        public double Price { get; set; }
+}
 }
