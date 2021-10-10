@@ -96,8 +96,8 @@ using Blazored.Modal.Services;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/counter")]
-    public partial class Counter : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/services")]
+    public partial class Services : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -105,7 +105,7 @@ using Blazored.Modal.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 9 "/Users/yassa/TikTechCRM/Pages/Counter.razor"
+#line 27 "/Users/yassa/TikTechCRM/Pages/Services.razor"
        
     private int currentCount = 0;
 

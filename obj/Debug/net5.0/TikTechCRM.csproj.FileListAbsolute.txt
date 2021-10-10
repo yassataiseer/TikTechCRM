@@ -404,7 +404,6 @@
 /Users/yassa/TikTechCRM/obj/Debug/net5.0/TikTechCRM.MvcApplicationPartsAssemblyInfo.cache
 /Users/yassa/TikTechCRM/obj/Debug/net5.0/TikTechCRM.RazorComponent.input.cache
 /Users/yassa/TikTechCRM/obj/Debug/net5.0/RazorDeclaration/App.razor.g.cs
-/Users/yassa/TikTechCRM/obj/Debug/net5.0/RazorDeclaration/Pages/Counter.razor.g.cs
 /Users/yassa/TikTechCRM/obj/Debug/net5.0/RazorDeclaration/Pages/FetchData.razor.g.cs
 /Users/yassa/TikTechCRM/obj/Debug/net5.0/RazorDeclaration/Pages/Index.razor.g.cs
 /Users/yassa/TikTechCRM/obj/Debug/net5.0/RazorDeclaration/Shared/SurveyPrompt.razor.g.cs
@@ -417,7 +416,6 @@
 /Users/yassa/TikTechCRM/obj/Debug/net5.0/TikTechCRM.TagHelpers.output.cache
 /Users/yassa/TikTechCRM/obj/Debug/net5.0/TikTechCRM.RazorCoreGenerate.cache
 /Users/yassa/TikTechCRM/obj/Debug/net5.0/Razor/App.razor.g.cs
-/Users/yassa/TikTechCRM/obj/Debug/net5.0/Razor/Pages/Counter.razor.g.cs
 /Users/yassa/TikTechCRM/obj/Debug/net5.0/Razor/Pages/FetchData.razor.g.cs
 /Users/yassa/TikTechCRM/obj/Debug/net5.0/Razor/Pages/Index.razor.g.cs
 /Users/yassa/TikTechCRM/obj/Debug/net5.0/Razor/Shared/SurveyPrompt.razor.g.cs
@@ -636,3 +634,5 @@
 /Users/yassa/TikTechCRM/bin/Debug/net5.0/wwwroot/_framework/Blazored.Modal.dll.gz
 /Users/yassa/TikTechCRM/bin/Debug/net5.0/wwwroot/_framework/Blazored.Modal.dll
 /Users/yassa/TikTechCRM/obj/Debug/net5.0/build-gz/CtT2J8KX.gz
+/Users/yassa/TikTechCRM/obj/Debug/net5.0/RazorDeclaration/Pages/Services.razor.g.cs
+/Users/yassa/TikTechCRM/obj/Debug/net5.0/Razor/Pages/Services.razor.g.cs

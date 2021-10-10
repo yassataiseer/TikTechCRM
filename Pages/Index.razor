@@ -2,27 +2,27 @@
 @inject IModalService modal  
 
 <html>
+<h1>Users</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Name</th>
                 <th>Password</th>
-                <th>Edit</th>
-                <th>Delete</th>
-
             </tr>
         </thead>
         <tbody>
                 <tr>
                     <td>Yassa Taiseer</td>
-                    <td>yassa123</td>
-                    <td><button class="btn btn-primary" >Edit</button> </td>
-                    <td><button type="button" class="btn btn-danger">Delete</button></td>
+                    <td>yassa123 <button class="btn btn-primary" >Edit</button>
+                    <button type="button" class="btn btn-danger">Delete</button>
+                     </td>
                 </tr>
         </tbody>
     </table>
 <button @onclick="@(()=>modal.Show<FetchData>("Modal Popup Example"))" class="btn btn-primary">View</button> 
+<button  class="btn btn-info">Add a User</button> 
+
 </html>
 @code{
 
