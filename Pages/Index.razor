@@ -1,4 +1,7 @@
 ﻿@page "/"
+@inject IModalService modal  
+
+<html>
 
     <table class="table">
         <thead>
@@ -19,3 +22,8 @@
                 </tr>
         </tbody>
     </table>
+<button @onclick="@(()=>modal.Show<FetchData>("Modal Popup Example"))" class="btn btn-primary">View</button> 
+</html>
+@code{
+
+}

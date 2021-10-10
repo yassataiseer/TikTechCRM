@@ -197,11 +197,11 @@
       "mscorlib.dll": "sha256-aRw41w\/QxOqc3NzhbK7UKf1zT6z\/oHtp9BlXl4JWwjM=",
       "netstandard.dll": "sha256-stWPH7tpmfc4JFroiKGKWcPfLQ+ALD6yQUXA9NiV0fQ=",
       "System.Private.CoreLib.dll": "sha256-PbMTdb+kswRpFmuD8S4hY70nkZ9LeYJg7y3wm7hj0CQ=",
-      "TikTechCRM.dll": "sha256-\/AzZvZ8mbfUckMB3ReQ6\/CAathc5ToiXY1c4XKaCx1E="
+      "TikTechCRM.dll": "sha256-eHGKIuQ2laE9GE4EBJIJYCHa6PkBGFJaNEf9L\/g4aJQ="
     },
     "lazyAssembly": null,
     "pdb": {
-      "TikTechCRM.pdb": "sha256-5J64UTp1\/DTirWbpBZx5ThGOr9VpOq3ob7eew5Zu40A="
+      "TikTechCRM.pdb": "sha256-\/RY7bAuzvxfVWM8+MDZHrrlGxDCtNFbrhmraDAFhMTo="
     },
     "runtime": {
       "dotnet.timezones.blat": "sha256-SQvzbzBfueaAxSKIKE1khBH02NH2MJJaWDBav\/S5MSs=",
