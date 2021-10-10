@@ -90,7 +90,7 @@ using TikTechCRM.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 28 "/Users/yassa/TikTechCRM/Shared/NavMenu.razor"
+#line 33 "/Users/yassa/TikTechCRM/Shared/NavMenu.razor"
        
     private bool collapseNavMenu = true;
 
