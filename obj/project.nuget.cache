@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "zcXk1QT9Ca6qusS379nN9BGyPWHL8cr9OAuXu4jvQ9yUyb47b2fWySLGcFw8MYdJn/rkQo7CG1GmhYDVwaGURQ==",
+  "dgSpecHash": "ZC2ryD600CZCG1+xiEOeErTK9ymC3B7S527qXyh6mM3Yo+Nqbc2YLGjACHbnqxZf3ZGtVUzYAuabUw9tE7JvLQ==",
   "success": true,
   "projectFilePath": "/Users/yassa/TikTechCRM/TikTechCRM.csproj",
   "expectedPackageFiles": [
+    "/Users/yassa/.nuget/packages/blazored.modal/6.0.1/blazored.modal.6.0.1.nupkg.sha512",
     "/Users/yassa/.nuget/packages/microsoft.aspnetcore.authorization/5.0.5/microsoft.aspnetcore.authorization.5.0.5.nupkg.sha512",
     "/Users/yassa/.nuget/packages/microsoft.aspnetcore.components/5.0.5/microsoft.aspnetcore.components.5.0.5.nupkg.sha512",
     "/Users/yassa/.nuget/packages/microsoft.aspnetcore.components.analyzers/5.0.5/microsoft.aspnetcore.components.analyzers.5.0.5.nupkg.sha512",

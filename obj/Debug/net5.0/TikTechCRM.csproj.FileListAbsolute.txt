@@ -633,3 +633,6 @@
 /Users/yassa/TikTechCRM/bin/Debug/net5.0/wwwroot/_framework/Newtonsoft.Json.dll.gz
 /Users/yassa/TikTechCRM/bin/Debug/net5.0/wwwroot/_framework/Newtonsoft.Json.dll
 /Users/yassa/TikTechCRM/obj/Debug/net5.0/build-gz/TWhpqUMH.gz
+/Users/yassa/TikTechCRM/bin/Debug/net5.0/wwwroot/_framework/Blazored.Modal.dll.gz
+/Users/yassa/TikTechCRM/bin/Debug/net5.0/wwwroot/_framework/Blazored.Modal.dll
+/Users/yassa/TikTechCRM/obj/Debug/net5.0/build-gz/CtT2J8KX.gz
