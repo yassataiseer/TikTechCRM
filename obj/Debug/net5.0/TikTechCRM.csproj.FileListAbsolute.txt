@@ -636,3 +636,10 @@
 /Users/yassa/TikTechCRM/obj/Debug/net5.0/build-gz/CtT2J8KX.gz
 /Users/yassa/TikTechCRM/obj/Debug/net5.0/RazorDeclaration/Pages/Services.razor.g.cs
 /Users/yassa/TikTechCRM/obj/Debug/net5.0/Razor/Pages/Services.razor.g.cs
+/Users/yassa/TikTechCRM/obj/Debug/net5.0/RazorDeclaration/Pages/Login.razor.g.cs
+/Users/yassa/TikTechCRM/obj/Debug/net5.0/Razor/Pages/Login.razor.g.cs
+/Users/yassa/TikTechCRM/obj/Debug/net5.0/RazorDeclaration/Pages/EmptyLayout.razor.g.cs
+/Users/yassa/TikTechCRM/obj/Debug/net5.0/Razor/Pages/EmptyLayout.razor.g.cs
+/Users/yassa/TikTechCRM/bin/Debug/net5.0/wwwroot/_framework/Blazored.LocalStorage.dll.gz
+/Users/yassa/TikTechCRM/bin/Debug/net5.0/wwwroot/_framework/Blazored.LocalStorage.dll
+/Users/yassa/TikTechCRM/obj/Debug/net5.0/build-gz/alWug+9D.gz

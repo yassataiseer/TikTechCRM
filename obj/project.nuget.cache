@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ZC2ryD600CZCG1+xiEOeErTK9ymC3B7S527qXyh6mM3Yo+Nqbc2YLGjACHbnqxZf3ZGtVUzYAuabUw9tE7JvLQ==",
+  "dgSpecHash": "0ncrK0808T6tiWF5hJ6xqt3A8YMQoXsMitLSy3OWJCf/AIqMF0Zq8c4QArB72xPZVhKBzdHX/cSFnYskOapi7g==",
   "success": true,
   "projectFilePath": "/Users/yassa/TikTechCRM/TikTechCRM.csproj",
   "expectedPackageFiles": [
+    "/Users/yassa/.nuget/packages/blazored.localstorage/4.1.5/blazored.localstorage.4.1.5.nupkg.sha512",
     "/Users/yassa/.nuget/packages/blazored.modal/6.0.1/blazored.modal.6.0.1.nupkg.sha512",
     "/Users/yassa/.nuget/packages/microsoft.aspnetcore.authorization/5.0.5/microsoft.aspnetcore.authorization.5.0.5.nupkg.sha512",
     "/Users/yassa/.nuget/packages/microsoft.aspnetcore.components/5.0.5/microsoft.aspnetcore.components.5.0.5.nupkg.sha512",

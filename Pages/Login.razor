@@ -1,0 +1,61 @@
+@layout EmptyLayout
+@page "/"
+
+<!DOCTYPE html>
+<html>
+<head>
+<link href="/css/app.css" rel="stylesheet" type="text/css" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<EditForm Model="@LoginModel" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+
+    <InputText id="UserName" @bind-Value="LoginModel.UserName" />
+    <br>
+    <InputText type="password" id="Password" @bind-Value="LoginModel.Password" />
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button> 
+    <ValidationSummary />
+
+</EditForm>
+</html>
+@code {
+    @using System.Net.Http
+    @using System.Text 
+    @using System.Net.Http.Json
+    @using System.Web
+    @using Newtonsoft.Json.Linq
+    @using Newtonsoft.Json
+    @inject NavigationManager NavManager
+    @inject NavigationManager UriHelper
+    @inject IJSRuntime JsRuntime;
+
+    private LoginModel LoginModel = new();
+
+    private async void  HandleValidSubmit()
+    {
+        using var client = new HttpClient();
+        var result = await client.GetStringAsync("http://0.0.0.0:800/Users/validate_user/"+LoginModel.UserName+"/"+LoginModel.Password);
+        dynamic data = JObject.Parse(result);
+        Console.WriteLine(data.Status);
+        if (data.Status=="true"){
+            await JsRuntime.InvokeVoidAsync("BlazorSetLocalStorage", "Username:", LoginModel.UserName);
+            //await JsRuntime.InvokeAsync<bool>("WriteCookie",  "Username", LoginModel.Password, 1);
+            //await localStorage.SetItemAsync("Username", "LoginModel.UserName");
+            //var Username = await localStorage.GetItemAsync<string>("Username");
+            //await JSRuntime.InvokeAsync<bool>( "Username", LoginModel.UserName);            
+            //Console.WriteLine(Username);
+            NavManager.NavigateTo("/Users",true); 
+        } 
+        else {
+            await JsRuntime.InvokeVoidAsync("alert", "Invalid Creds.");
+        }
+        
+
+
+        //Console.WriteLine(LoginModel.Password);
+        //Console.WriteLine("hello");
+        // Process the valid form
+    }
+}
