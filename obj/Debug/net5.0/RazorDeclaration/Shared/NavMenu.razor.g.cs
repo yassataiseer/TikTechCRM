@@ -96,6 +96,20 @@ using Blazored.Modal.Services;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 13 "/Users/yassa/TikTechCRM/_Imports.razor"
+using Microsoft.AspNetCore.Authorization;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 14 "/Users/yassa/TikTechCRM/_Imports.razor"
+[Authorize]
+
+#line default
+#line hidden
+#nullable disable
     public partial class NavMenu : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -104,7 +118,7 @@ using Blazored.Modal.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 38 "/Users/yassa/TikTechCRM/Shared/NavMenu.razor"
+#line 43 "/Users/yassa/TikTechCRM/Shared/NavMenu.razor"
        
     private bool collapseNavMenu = true;
 

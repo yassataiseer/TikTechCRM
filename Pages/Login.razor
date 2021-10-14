@@ -1,24 +1,200 @@
 @layout EmptyLayout
 @page "/"
-
 <!DOCTYPE html>
+
 <html>
+    <style>
+html {
+    height: 100%;
+  }
+  
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+  background-color:rgb(255,255,255);
+}
+  h1{
+      color:rgb(255,255,255);
+  }
+  h3,h2{
+      color:rgb(0, 35, 102);
+  }
+  h6{
+    color:rgb(	0, 35, 102);
+}
+  input[type=text], input[type=password],input[type=number] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  body{
+      background-color:rgb(255,255,255);
+  }
+
+  input[type=text],input[type=number] {
+   background-color: rgb(252, 255, 255);
+   color:rgb(0, 0, 0);
+  }
+  input[type=password] {
+   background-color: rgb(252, 255, 255);
+   color:rgb(0,0,0);
+  }
+  .cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+  }
+  
+  .imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+  }
+  
+  img.avatar {
+    width: 40%;
+    border-radius: 50%;
+  }
+  
+  .container {
+    padding: 16px;
+  }
+  
+  span.psw {
+    float: right;
+    padding-top: 16px;
+  }
+
+  
+  .card {
+    box-shadow: 0 4px 8px 0 rgb(0,0,0,0.2);
+    transition: 0.3s;
+    background:rgb(255,255,255);
+    width: 30%;
+    margin:  0px auto;
+  
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  .container {
+    padding: 2px 16px;
+  }
+  
+  .topnav {
+    overflow: hidden;
+    background-color:rgb(	0, 35, 102);
+    position: fixed;
+    top: 0;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    right: 5px;
+  }
+  
+  
+  .topnav a {
+    float: left;
+    color: rgb(	0, 35, 102);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+   .home_button {
+    float: right;
+    background-color: rgb(0, 35, 102); /* Blue background */
+    color: rgb(255,254,240);
+    text-align: right;
+    font-size: 17px;
+  }
+  .home_button:hover {
+    color:rgb(0, 35, 102) ;
+  background-color:rgb(255,254,240);
+}
+  .topnav a:hover {
+    background-color: rgb(0, 35, 102);
+    color: black;
+  }
+   
+  
+  
+  .topnav a.active {
+    background-color: rgb(0, 35, 102);
+    color: white;
+  }
+  
+
+  
+
+  .wrapper {
+    text-align: center;
+}
+
+  /* Darker background on mouse-over */
+
+  
+
+
+  body{
+    font-family:Verdana, Geneva, sans-serif;
+    font-size:18px;
+    background-color:rgb(255,255,255);
+  }
+  
+  .float{
+    position:fixed;
+    width:60px;
+    height:60px;
+    bottom:40px;
+    right:40px;
+    background-color:rgb(0, 35, 102);
+    color:rgb(255,254,240);
+    border-radius:50px;
+    text-align:center;
+    box-shadow: 2px 2px 3px #999;
+  }
+  
+  .my-float{
+    margin-top:22px;
+  }
+  .row,.col-xl-6{
+    text-align: center;
+  }
+    </style>
 <head>
-<link href="/css/app.css" rel="stylesheet" type="text/css" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
+<div class="topnav">
+<a><h1>Tik Tech CRM </h1></a>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="card">
+<div class="container">
 <EditForm Model="@LoginModel" OnValidSubmit="@HandleValidSubmit">
     <DataAnnotationsValidator />
-
-    <InputText id="UserName" @bind-Value="LoginModel.UserName" />
+    <h3>Username</h3>
+    <InputText type="text" id="UserName" @bind-Value="LoginModel.UserName" />
     <br>
+    <h3>Password</h3>
     <InputText type="password" id="Password" @bind-Value="LoginModel.Password" />
+    <br>
     <br>
     <button type="submit" class="btn btn-primary">Submit</button> 
     <ValidationSummary />
-
 </EditForm>
+</div>
+</div>
 </html>
 @code {
     @using System.Net.Http
@@ -57,5 +233,11 @@
         //Console.WriteLine(LoginModel.Password);
         //Console.WriteLine("hello");
         // Process the valid form
+    }
+        protected override async Task OnInitializedAsync()
+    {
+
+        await JsRuntime.InvokeVoidAsync("BlazorRemoveCookie","Username:");
+       
     }
 }

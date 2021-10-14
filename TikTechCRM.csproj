@@ -9,5 +9,6 @@
     <PackageReference Include="Newtonsoft.Json" Version="*"/>
     <PackageReference Include="Blazored.Modal" Version="*"/>
     <PackageReference Include="Blazored.LocalStorage" Version="*"/>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="*"/>
   </ItemGroup>
 </Project>

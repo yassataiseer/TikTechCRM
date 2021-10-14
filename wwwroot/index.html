@@ -35,6 +35,9 @@
     function BlazorGetLocalStorage(key) {
         return localStorage.getItem(key);
     }
+    function BlazorRemoveCookie(key){
+        localStorage.removeItem(key);
+    }
 
     function BlazorRegisterStorageEvent(component) {
         window.addEventListener("storage", async e => {

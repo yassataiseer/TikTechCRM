@@ -13,20 +13,6 @@ namespace TikTechCRM.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "/Users/yassa/TikTechCRM/_Imports.razor"
-using System.Net.Http;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 2 "/Users/yassa/TikTechCRM/_Imports.razor"
-using System.Net.Http.Json;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
 #line 3 "/Users/yassa/TikTechCRM/_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
@@ -96,6 +82,62 @@ using Blazored.Modal.Services;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 13 "/Users/yassa/TikTechCRM/_Imports.razor"
+using Microsoft.AspNetCore.Authorization;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 27 "/Users/yassa/TikTechCRM/Pages/Index.razor"
+using System.Net.Http;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 28 "/Users/yassa/TikTechCRM/Pages/Index.razor"
+using System.Text;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 29 "/Users/yassa/TikTechCRM/Pages/Index.razor"
+using System.Net.Http.Json;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 30 "/Users/yassa/TikTechCRM/Pages/Index.razor"
+using System.Web;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 31 "/Users/yassa/TikTechCRM/Pages/Index.razor"
+using Newtonsoft.Json.Linq;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 32 "/Users/yassa/TikTechCRM/Pages/Index.razor"
+using Newtonsoft.Json;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 14 "/Users/yassa/TikTechCRM/_Imports.razor"
+[Authorize]
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/Users")]
     public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -104,6 +146,27 @@ using Blazored.Modal.Services;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 37 "/Users/yassa/TikTechCRM/Pages/Index.razor"
+      
+    private dynamic validate;
+        protected override async Task OnInitializedAsync()
+    {
+
+        validate =  await JsRuntime.InvokeAsync<string>("BlazorGetLocalStorage","Username:");
+       string value = (string)validate;
+       if(value==null){
+            NavManager.NavigateTo("/",true); 
+
+       }
+    }
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime JsRuntime { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager UriHelper { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavManager { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IModalService modal { get; set; }
     }
 }

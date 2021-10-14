@@ -93,6 +93,20 @@ using Blazored.Modal.Services;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 13 "/Users/yassa/TikTechCRM/_Imports.razor"
+using Microsoft.AspNetCore.Authorization;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 14 "/Users/yassa/TikTechCRM/_Imports.razor"
+[Authorize]
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/services")]
     public partial class Services : Microsoft.AspNetCore.Components.ComponentBase
     {

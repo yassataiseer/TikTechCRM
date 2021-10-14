@@ -83,43 +83,57 @@ using Blazored.Modal.Services;
 #line hidden
 #nullable disable
 #nullable restore
-#line 24 "/Users/yassa/TikTechCRM/Pages/Login.razor"
+#line 13 "/Users/yassa/TikTechCRM/_Imports.razor"
+using Microsoft.AspNetCore.Authorization;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 200 "/Users/yassa/TikTechCRM/Pages/Login.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 25 "/Users/yassa/TikTechCRM/Pages/Login.razor"
+#line 201 "/Users/yassa/TikTechCRM/Pages/Login.razor"
 using System.Text;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 26 "/Users/yassa/TikTechCRM/Pages/Login.razor"
+#line 202 "/Users/yassa/TikTechCRM/Pages/Login.razor"
 using System.Net.Http.Json;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 27 "/Users/yassa/TikTechCRM/Pages/Login.razor"
+#line 203 "/Users/yassa/TikTechCRM/Pages/Login.razor"
 using System.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 28 "/Users/yassa/TikTechCRM/Pages/Login.razor"
+#line 204 "/Users/yassa/TikTechCRM/Pages/Login.razor"
 using Newtonsoft.Json.Linq;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 29 "/Users/yassa/TikTechCRM/Pages/Login.razor"
+#line 205 "/Users/yassa/TikTechCRM/Pages/Login.razor"
 using Newtonsoft.Json;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 14 "/Users/yassa/TikTechCRM/_Imports.razor"
+[Authorize]
 
 #line default
 #line hidden
@@ -134,7 +148,7 @@ using Newtonsoft.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 33 "/Users/yassa/TikTechCRM/Pages/Login.razor"
+#line 209 "/Users/yassa/TikTechCRM/Pages/Login.razor"
 
     private LoginModel LoginModel = new();
 
@@ -162,6 +176,12 @@ using Newtonsoft.Json;
         //Console.WriteLine(LoginModel.Password);
         //Console.WriteLine("hello");
         // Process the valid form
+    }
+        protected override async Task OnInitializedAsync()
+    {
+
+        await JsRuntime.InvokeVoidAsync("BlazorRemoveCookie","Username:");
+       
     }
 
 #line default

@@ -80,6 +80,13 @@ using Blazored.Modal.Services;
 #line hidden
 #nullable disable
 #nullable restore
+#line 13 "/Users/yassa/TikTechCRM/_Imports.razor"
+using Microsoft.AspNetCore.Authorization;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 57 "/Users/yassa/TikTechCRM/Pages/FetchData.razor"
 using System.Net.Http;
 
@@ -117,6 +124,13 @@ using Newtonsoft.Json.Linq;
 #nullable restore
 #line 62 "/Users/yassa/TikTechCRM/Pages/FetchData.razor"
 using Newtonsoft.Json;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 14 "/Users/yassa/TikTechCRM/_Imports.razor"
+[Authorize]
 
 #line default
 #line hidden
