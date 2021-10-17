@@ -1,0 +1,59 @@
+@page "/EditUser/{Username}/{Password}"
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<h1>Edit Username</h1>
+
+</head>
+<div class="card">
+<div class="container">
+<EditForm Model="@EditLoginModel" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <h4>Username:</h4>
+    <InputText type="text" id="UserName"  @bind-Value="@Username" readonly/>
+    <h6>*You cant change the username</h6>
+    <br>
+    <h4>New Password:</h4>
+    <InputText type="password" id="Password" placeholder="@Password" @bind-Value="EditLoginModel.Password" />
+    <br>
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button> 
+    <ValidationSummary />
+</EditForm>
+</div>
+</div>
+</html>
+@code{
+    @using System.Net.Http
+    @using System.Text 
+    @using System.Net.Http.Json
+    @using System.Web
+    @using Newtonsoft.Json.Linq
+    @using Newtonsoft.Json
+    @inject NavigationManager NavManager
+    @inject NavigationManager UriHelper
+    @inject IJSRuntime JsRuntime;
+
+    private EditLoginModel EditLoginModel = new();
+
+    [Parameter]
+    public string Username { get; set; }
+    [Parameter]
+
+    public string Password{ get; set; }
+    public async void HandleValidSubmit(){
+        using var client = new HttpClient();
+        var result = await client.GetStringAsync("http://0.0.0.0:800/Users/update_user/"+Username+"/"+EditLoginModel.Password);
+        dynamic data = JObject.Parse(result);
+        Console.WriteLine(data.Status);
+        if (data.Status=="true"){         
+            NavManager.NavigateTo("/Users",true); 
+        } 
+        else {
+            await JsRuntime.InvokeVoidAsync("alert", "This username is taken!");
+        }
+    }
+
+}

@@ -170,18 +170,13 @@ using Newtonsoft.Json;
         else {
             await JsRuntime.InvokeVoidAsync("alert", "Invalid Creds.");
         }
-        
-
-
         //Console.WriteLine(LoginModel.Password);
         //Console.WriteLine("hello");
         // Process the valid form
     }
         protected override async Task OnInitializedAsync()
     {
-
-        await JsRuntime.InvokeVoidAsync("BlazorRemoveCookie","Username:");
-       
+        await JsRuntime.InvokeVoidAsync("BlazorRemoveCookie","Username:");  
     }
 
 #line default

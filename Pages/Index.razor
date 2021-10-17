@@ -1,27 +1,49 @@
 ﻿@page "/Users"
-@inject IModalService modal  
+@inject IModalService Modal
 
 <html>
 <h1>Users</h1>
+@if(isAdmin){
+    @if (UserData == null)
+    {
+        <p><em>Loading...</em></p>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Password</th>
-            </tr>
-        </thead>
-        <tbody>
+    }else{
+        <h6>*Note: Admin Value remains as is!</h6>
+        <table class="table">
+            <thead>
                 <tr>
-                    <td>Yassa Taiseer</td>
-                    <td>yassa123 <button class="btn btn-primary" >Edit</button>
-                    <button type="button" class="btn btn-danger">Delete</button>
-                     </td>
+                    <th>Name</th>
+                    <th>Password</th>
                 </tr>
-        </tbody>
-    </table>
-<button @onclick="@(()=>modal.Show<FetchData>("Modal Popup Example"))" class="btn btn-primary">View</button> 
-<button  class="btn btn-info">Add a User</button> 
+            </thead>
+
+            <tbody>
+
+                
+
+                @foreach (var users in UserData)
+                {
+                    if(users.Username!="Admin"){
+                    <tr>
+                        <td>@users.Username</td>
+                        <td>@users.Password 
+
+                        <button class="btn btn-primary" @onclick="() => EditRedirect(users.Username,users.Password)" > Edit</button>
+                        <button type="button" class="btn btn-danger" @onclick="() => DeleteUser(users.Username,users.Password)"  >Delete</button>
+                        </td>
+                    </tr>
+                    }
+                }
+            </tbody>
+        </table>
+                }
+    <button  class="btn btn-info" @onclick="() => NewUser()">Add a User</button> 
+}
+else{
+    <h3>You are not Admin you don't have access to this page</h3>
+}
+
 
 </html>
     @using System.Net.Http
@@ -35,15 +57,50 @@
     @inject IJSRuntime JsRuntime;
     
 @code{
-    private dynamic validate;
-        protected override async Task OnInitializedAsync()
-    {
 
+
+
+    private List<UsersModel> UserData = new();
+    private dynamic validate;
+    public bool isAdmin;
+
+    protected override async Task OnInitializedAsync(){
         validate =  await JsRuntime.InvokeAsync<string>("BlazorGetLocalStorage","Username:");
        string value = (string)validate;
        if(value==null){
             NavManager.NavigateTo("/",true); 
-
        }
+        if(value=="Admin"){
+            using var client = new HttpClient();
+            var result = await client.GetStringAsync("http://0.0.0.0:800/Users/grab_users");
+
+            JArray data = JArray.Parse(result);
+            foreach (dynamic obj in data){
+                    UserData.Add(new UsersModel(){
+                        Password = obj.Password,
+                        Username  = obj.Username
+                });
+            }
+            isAdmin=true;
+        }else{
+            isAdmin=false;
+        }
+        StateHasChanged();
+
+    }
+    private void EditRedirect(string Username,string Password)
+    {
+        NavManager.NavigateTo("/EditUser/"+Username+"/"+Password,true); 
+    }
+
+
+    private async void DeleteUser(string Username,string Password){
+        using var client = new HttpClient();
+        var result = await client.GetStringAsync("http://0.0.0.0:800/Users/delete_user/"+Username+"/"+Password);
+        NavManager.NavigateTo("/Users",true); 
+    }
+    private void NewUser()
+    {
+        NavManager.NavigateTo("/Newuser",true); 
     }
 }

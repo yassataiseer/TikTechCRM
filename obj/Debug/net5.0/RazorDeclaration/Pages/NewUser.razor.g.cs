@@ -90,42 +90,42 @@ using Microsoft.AspNetCore.Authorization;
 #line hidden
 #nullable disable
 #nullable restore
-#line 49 "/Users/yassa/TikTechCRM/Pages/Index.razor"
+#line 29 "/Users/yassa/TikTechCRM/Pages/NewUser.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 50 "/Users/yassa/TikTechCRM/Pages/Index.razor"
+#line 30 "/Users/yassa/TikTechCRM/Pages/NewUser.razor"
 using System.Text;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 51 "/Users/yassa/TikTechCRM/Pages/Index.razor"
+#line 31 "/Users/yassa/TikTechCRM/Pages/NewUser.razor"
 using System.Net.Http.Json;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 52 "/Users/yassa/TikTechCRM/Pages/Index.razor"
+#line 32 "/Users/yassa/TikTechCRM/Pages/NewUser.razor"
 using System.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 53 "/Users/yassa/TikTechCRM/Pages/Index.razor"
+#line 33 "/Users/yassa/TikTechCRM/Pages/NewUser.razor"
 using Newtonsoft.Json.Linq;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 54 "/Users/yassa/TikTechCRM/Pages/Index.razor"
+#line 34 "/Users/yassa/TikTechCRM/Pages/NewUser.razor"
 using Newtonsoft.Json;
 
 #line default
@@ -138,8 +138,8 @@ using Newtonsoft.Json;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/Users")]
-    public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/Newuser")]
+    public partial class NewUser : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -147,53 +147,34 @@ using Newtonsoft.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 59 "/Users/yassa/TikTechCRM/Pages/Index.razor"
-      
-
-
-
-    private List<UsersModel> UserData = new();
+#line 38 "/Users/yassa/TikTechCRM/Pages/NewUser.razor"
     private dynamic validate;
-    public bool isAdmin;
+    private LoginModel LoginModel = new();
+
+    private async void  HandleValidSubmit()
+    {
+        using var client = new HttpClient();
+        var result = await client.GetStringAsync("http://0.0.0.0:800/Users/mk_user/"+LoginModel.UserName+"/"+LoginModel.Password);
+        dynamic data = JObject.Parse(result);
+        Console.WriteLine(data.Status);
+        if (data.Status=="true"){
+            NavManager.NavigateTo("/Users",true); 
+        } 
+        else {
+            await JsRuntime.InvokeVoidAsync("alert", "Username is already taken");
+        }
+        //Console.WriteLine(LoginModel.Password);
+        //Console.WriteLine("hello");
+        // Process the valid form
+    }
 
     protected override async Task OnInitializedAsync(){
         validate =  await JsRuntime.InvokeAsync<string>("BlazorGetLocalStorage","Username:");
        string value = (string)validate;
+       
        if(value==null){
             NavManager.NavigateTo("/",true); 
-       }
-        if(value=="Admin"){
-            using var client = new HttpClient();
-            var result = await client.GetStringAsync("http://0.0.0.0:800/Users/grab_users");
-
-            JArray data = JArray.Parse(result);
-            foreach (dynamic obj in data){
-                    UserData.Add(new UsersModel(){
-                        Password = obj.Password,
-                        Username  = obj.Username
-                });
-            }
-            isAdmin=true;
-        }else{
-            isAdmin=false;
-        }
-        StateHasChanged();
-
-    }
-    private void EditRedirect(string Username,string Password)
-    {
-        NavManager.NavigateTo("/EditUser/"+Username+"/"+Password,true); 
-    }
-
-
-    private async void DeleteUser(string Username,string Password){
-        using var client = new HttpClient();
-        var result = await client.GetStringAsync("http://0.0.0.0:800/Users/delete_user/"+Username+"/"+Password);
-        NavManager.NavigateTo("/Users",true); 
-    }
-    private void NewUser()
-    {
-        NavManager.NavigateTo("/Newuser",true); 
+       }        
     }
 
 #line default
@@ -202,7 +183,6 @@ using Newtonsoft.Json;
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime JsRuntime { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager UriHelper { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavManager { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IModalService Modal { get; set; }
     }
 }
 #pragma warning restore 1591

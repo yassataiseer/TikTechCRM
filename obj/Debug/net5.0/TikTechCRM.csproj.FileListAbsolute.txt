@@ -649,3 +649,7 @@
 /Users/yassa/TikTechCRM/obj/Debug/net5.0/build-gz/tsKMaEJn.gz
 /Users/yassa/TikTechCRM/obj/Debug/net5.0/build-gz/XE37nBmq.gz
 /Users/yassa/TikTechCRM/obj/Debug/net5.0/build-gz/W89LnAPg.gz
+/Users/yassa/TikTechCRM/obj/Debug/net5.0/RazorDeclaration/Pages/EditUser.razor.g.cs
+/Users/yassa/TikTechCRM/obj/Debug/net5.0/Razor/Pages/EditUser.razor.g.cs
+/Users/yassa/TikTechCRM/obj/Debug/net5.0/RazorDeclaration/Pages/NewUser.razor.g.cs
+/Users/yassa/TikTechCRM/obj/Debug/net5.0/Razor/Pages/NewUser.razor.g.cs
