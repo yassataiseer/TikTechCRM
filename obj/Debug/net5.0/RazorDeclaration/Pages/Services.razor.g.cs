@@ -175,7 +175,11 @@ using Newtonsoft.Json;
     public void NewService(){
         NavManager.NavigateTo("/Newservice",true); 
     }
-
+    private async void DeleteService(string Service_name){
+        using var client = new HttpClient();
+        var result = await client.GetStringAsync("http://0.0.0.0:800/Services/del_Services/"+Service_name);
+        NavManager.NavigateTo("/Services",true); 
+    }
 
 #line default
 #line hidden

@@ -21,7 +21,7 @@
                     <td>@Services.Service_name</td>
                     <td>@Services.Service_purpose</td>
                     <td>$@Services.Service_cost <button class="btn btn-primary" >Edit</button>
-                    <button type="button" class="btn btn-danger">Delete</button>
+                    <button type="button" class="btn btn-danger" @onclick="() => DeleteService(Services.Service_name)">Delete</button>
                      </td>
                 </tr>
                 }
@@ -68,5 +68,9 @@
     public void NewService(){
         NavManager.NavigateTo("/Newservice",true); 
     }
-
+    private async void DeleteService(string Service_name){
+        using var client = new HttpClient();
+        var result = await client.GetStringAsync("http://0.0.0.0:800/Services/del_Services/"+Service_name);
+        NavManager.NavigateTo("/Services",true); 
+    }
 }
