@@ -90,42 +90,42 @@ using Microsoft.AspNetCore.Authorization;
 #line hidden
 #nullable disable
 #nullable restore
-#line 35 "/Users/yassa/TikTechCRM/Pages/Services.razor"
+#line 31 "/Users/yassa/TikTechCRM/Pages/NewService.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 36 "/Users/yassa/TikTechCRM/Pages/Services.razor"
+#line 32 "/Users/yassa/TikTechCRM/Pages/NewService.razor"
 using System.Text;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 37 "/Users/yassa/TikTechCRM/Pages/Services.razor"
+#line 33 "/Users/yassa/TikTechCRM/Pages/NewService.razor"
 using System.Net.Http.Json;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 38 "/Users/yassa/TikTechCRM/Pages/Services.razor"
+#line 34 "/Users/yassa/TikTechCRM/Pages/NewService.razor"
 using System.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 39 "/Users/yassa/TikTechCRM/Pages/Services.razor"
+#line 35 "/Users/yassa/TikTechCRM/Pages/NewService.razor"
 using Newtonsoft.Json.Linq;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 40 "/Users/yassa/TikTechCRM/Pages/Services.razor"
+#line 36 "/Users/yassa/TikTechCRM/Pages/NewService.razor"
 using Newtonsoft.Json;
 
 #line default
@@ -138,8 +138,8 @@ using Newtonsoft.Json;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/services")]
-    public partial class Services : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/Newservice")]
+    public partial class NewService : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -147,35 +147,35 @@ using Newtonsoft.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 44 "/Users/yassa/TikTechCRM/Pages/Services.razor"
-    private List<ServiceModel> ServiceData = new();
+#line 40 "/Users/yassa/TikTechCRM/Pages/NewService.razor"
     private dynamic validate;
+    private ServiceFormModel ServiceFormModel = new();
+
+    private async void  HandleValidSubmit()
+    {
+        using var client = new HttpClient();
+        var result = await client.GetStringAsync("http://0.0.0.0:800/Services/mk_Service/"+ServiceFormModel.Service_name+"/"+ServiceFormModel.Service_purpose+"/"+ServiceFormModel.Service_cost.ToString("0.00"));
+        dynamic data = JObject.Parse(result);
+        Console.WriteLine(data.Status);
+        if (data.Status=="true"){
+            NavManager.NavigateTo("/services",true); 
+        } 
+        else {
+            await JsRuntime.InvokeVoidAsync("alert", "Service is already taken");
+        }
+        //Console.WriteLine(LoginModel.Password);
+        //Console.WriteLine("hello");
+        // Process the valid form
+    }
 
     protected override async Task OnInitializedAsync(){
         validate =  await JsRuntime.InvokeAsync<string>("BlazorGetLocalStorage","Username:");
        string value = (string)validate;
+       
        if(value==null){
             NavManager.NavigateTo("/",true); 
-       }
-            using var client = new HttpClient();
-            var result = await client.GetStringAsync("http://0.0.0.0:800/Services/all_Services");
-
-            JArray data = JArray.Parse(result);
-            foreach (dynamic obj in data){
-                    ServiceData.Add(new ServiceModel(){
-                        Service_cost = obj.Service_cost,
-                        Service_name  = obj.Service_name,
-                        Service_purpose = obj.Service_purpose
-                });
-            }
-
-        StateHasChanged();
-
+       }        
     }
-    public void NewService(){
-        NavManager.NavigateTo("/Newservice",true); 
-    }
-
 
 #line default
 #line hidden

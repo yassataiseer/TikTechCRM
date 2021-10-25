@@ -2,6 +2,9 @@
 
 <html>
 <h1>Services</h1>
+    <br>
+    <button  class="btn btn-info" @onclick="() => NewService()" >Add a User</button> 
+    <br>
     <table class="table">
         <thead>
             <tr>
@@ -11,13 +14,17 @@
             </tr>
         </thead>
         <tbody>
+
+                @foreach (var Services in ServiceData)
+                {
                 <tr>
-                    <td>Fix Screen</td>
-                    <td>Repair mobile screen</td>
-                    <td>$150 <button class="btn btn-primary" >Edit</button>
+                    <td>@Services.Service_name</td>
+                    <td>@Services.Service_purpose</td>
+                    <td>$@Services.Service_cost <button class="btn btn-primary" >Edit</button>
                     <button type="button" class="btn btn-danger">Delete</button>
                      </td>
                 </tr>
+                }
         </tbody>
     </table>
 
@@ -25,10 +32,41 @@
 </html>
 
 @code {
-    private int currentCount = 0;
+    @using System.Net.Http
+    @using System.Text 
+    @using System.Net.Http.Json
+    @using System.Web
+    @using Newtonsoft.Json.Linq
+    @using Newtonsoft.Json
+    @inject NavigationManager NavManager
+    @inject NavigationManager UriHelper
+    @inject IJSRuntime JsRuntime;
+    private List<ServiceModel> ServiceData = new();
+    private dynamic validate;
 
-    private void IncrementCount()
-    {
-        currentCount++;
+    protected override async Task OnInitializedAsync(){
+        validate =  await JsRuntime.InvokeAsync<string>("BlazorGetLocalStorage","Username:");
+       string value = (string)validate;
+       if(value==null){
+            NavManager.NavigateTo("/",true); 
+       }
+            using var client = new HttpClient();
+            var result = await client.GetStringAsync("http://0.0.0.0:800/Services/all_Services");
+
+            JArray data = JArray.Parse(result);
+            foreach (dynamic obj in data){
+                    ServiceData.Add(new ServiceModel(){
+                        Service_cost = obj.Service_cost,
+                        Service_name  = obj.Service_name,
+                        Service_purpose = obj.Service_purpose
+                });
+            }
+
+        StateHasChanged();
+
     }
+    public void NewService(){
+        NavManager.NavigateTo("/Newservice",true); 
+    }
+
 }
