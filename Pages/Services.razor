@@ -3,7 +3,7 @@
 <html>
 <h1>Services</h1>
     <br>
-    <button  class="btn btn-info" @onclick="() => NewService()" >Add a User</button> 
+    <button  class="btn btn-info" @onclick="() => NewService()" >Add Service</button> 
     <br>
     <table class="table">
         <thead>
@@ -20,7 +20,7 @@
                 <tr>
                     <td>@Services.Service_name</td>
                     <td>@Services.Service_purpose</td>
-                    <td>$@Services.Service_cost <button class="btn btn-primary" >Edit</button>
+                    <td>$@Services.Service_cost <button class="btn btn-primary" @onclick="() => EditRedirect(Services.Service_name,Services.Service_purpose,Services.Service_cost)" >Edit</button>
                     <button type="button" class="btn btn-danger" @onclick="() => DeleteService(Services.Service_name)">Delete</button>
                      </td>
                 </tr>
@@ -72,5 +72,8 @@
         using var client = new HttpClient();
         var result = await client.GetStringAsync("http://0.0.0.0:800/Services/del_Services/"+Service_name);
         NavManager.NavigateTo("/Services",true); 
+    }
+    private void EditRedirect(string Service_name, string Service_purpose, double Service_cost){
+         NavManager.NavigateTo("/editservice/"+Service_name+"/"+Service_purpose+"/"+Service_cost.ToString(),true); 
     }
 }

@@ -170,75 +170,6 @@
         }
       },
       {
-        "HashCode": 1433934379,
-        "Kind": "Components.Component",
-        "Name": "TikTechCRM.Pages.EditUser",
-        "AssemblyName": "TikTechCRM",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "EditUser"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Username",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Username"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "Password",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Password"
-            }
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TikTechCRM.Pages.EditUser"
-        }
-      },
-      {
-        "HashCode": 1642518362,
-        "Kind": "Components.Component",
-        "Name": "TikTechCRM.Pages.EditUser",
-        "AssemblyName": "TikTechCRM",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "TikTechCRM.Pages.EditUser"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Username",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Username"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "Password",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Password"
-            }
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TikTechCRM.Pages.EditUser",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": -883921601,
         "Kind": "Components.Component",
         "Name": "TikTechCRM.Pages.NewUser",
@@ -338,6 +269,75 @@
         }
       },
       {
+        "HashCode": 1433934379,
+        "Kind": "Components.Component",
+        "Name": "TikTechCRM.Pages.EditUser",
+        "AssemblyName": "TikTechCRM",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "EditUser"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Username",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Username"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "Password",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Password"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TikTechCRM.Pages.EditUser"
+        }
+      },
+      {
+        "HashCode": 1642518362,
+        "Kind": "Components.Component",
+        "Name": "TikTechCRM.Pages.EditUser",
+        "AssemblyName": "TikTechCRM",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "TikTechCRM.Pages.EditUser"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Username",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Username"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "Password",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Password"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TikTechCRM.Pages.EditUser",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": -502748626,
         "Kind": "Components.Component",
         "Name": "TikTechCRM.Pages.Services",
@@ -367,6 +367,124 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "TikTechCRM.Pages.Services",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 1138843736,
+        "Kind": "Components.Component",
+        "Name": "TikTechCRM.Pages.EditService",
+        "AssemblyName": "TikTechCRM",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "EditService"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Service_name",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Service_name"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "Service_purpose",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Service_purpose"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "Service_cost",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Service_cost"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TikTechCRM.Pages.EditService"
+        }
+      },
+      {
+        "HashCode": 659500405,
+        "Kind": "Components.Component",
+        "Name": "TikTechCRM.Pages.EditService",
+        "AssemblyName": "TikTechCRM",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "TikTechCRM.Pages.EditService"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Service_name",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Service_name"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "Service_purpose",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Service_purpose"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "Service_cost",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Service_cost"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TikTechCRM.Pages.EditService",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -1802928743,
+        "Kind": "Components.Component",
+        "Name": "TikTechCRM.Pages.Inventory",
+        "AssemblyName": "TikTechCRM",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Inventory"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TikTechCRM.Pages.Inventory"
+        }
+      },
+      {
+        "HashCode": 202074486,
+        "Kind": "Components.Component",
+        "Name": "TikTechCRM.Pages.Inventory",
+        "AssemblyName": "TikTechCRM",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "TikTechCRM.Pages.Inventory"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TikTechCRM.Pages.Inventory",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -16170,6 +16288,11 @@
       "FileKind": "component"
     },
     {
+      "FilePath": "/Users/yassa/TikTechCRM/Pages/EditService.razor",
+      "TargetPath": "Pages\\EditService.razor",
+      "FileKind": "component"
+    },
+    {
       "FilePath": "/Users/yassa/TikTechCRM/Pages/EmptyLayout.razor",
       "TargetPath": "Pages\\EmptyLayout.razor",
       "FileKind": "component"
@@ -16212,6 +16335,11 @@
     {
       "FilePath": "/Users/yassa/TikTechCRM/Pages/NewUser.razor",
       "TargetPath": "Pages\\NewUser.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/Users/yassa/TikTechCRM/Pages/Inventory.razor",
+      "TargetPath": "Pages\\Inventory.razor",
       "FileKind": "component"
     },
     {

@@ -90,42 +90,42 @@ using Microsoft.AspNetCore.Authorization;
 #line hidden
 #nullable disable
 #nullable restore
-#line 35 "/Users/yassa/TikTechCRM/Pages/Services.razor"
+#line 32 "/Users/yassa/TikTechCRM/Pages/EditService.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 36 "/Users/yassa/TikTechCRM/Pages/Services.razor"
+#line 33 "/Users/yassa/TikTechCRM/Pages/EditService.razor"
 using System.Text;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 37 "/Users/yassa/TikTechCRM/Pages/Services.razor"
+#line 34 "/Users/yassa/TikTechCRM/Pages/EditService.razor"
 using System.Net.Http.Json;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 38 "/Users/yassa/TikTechCRM/Pages/Services.razor"
+#line 35 "/Users/yassa/TikTechCRM/Pages/EditService.razor"
 using System.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 39 "/Users/yassa/TikTechCRM/Pages/Services.razor"
+#line 36 "/Users/yassa/TikTechCRM/Pages/EditService.razor"
 using Newtonsoft.Json.Linq;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 40 "/Users/yassa/TikTechCRM/Pages/Services.razor"
+#line 37 "/Users/yassa/TikTechCRM/Pages/EditService.razor"
 using Newtonsoft.Json;
 
 #line default
@@ -138,8 +138,8 @@ using Newtonsoft.Json;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/services")]
-    public partial class Services : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/editservice/{Service_name}/{Service_purpose}/{Service_cost}")]
+    public partial class EditService : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -147,42 +147,28 @@ using Newtonsoft.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 44 "/Users/yassa/TikTechCRM/Pages/Services.razor"
-    private List<ServiceModel> ServiceData = new();
-    private dynamic validate;
+#line 41 "/Users/yassa/TikTechCRM/Pages/EditService.razor"
 
-    protected override async Task OnInitializedAsync(){
-        validate =  await JsRuntime.InvokeAsync<string>("BlazorGetLocalStorage","Username:");
-       string value = (string)validate;
-       if(value==null){
-            NavManager.NavigateTo("/",true); 
-       }
-            using var client = new HttpClient();
-            var result = await client.GetStringAsync("http://0.0.0.0:800/Services/all_Services");
-
-            JArray data = JArray.Parse(result);
-            foreach (dynamic obj in data){
-                    ServiceData.Add(new ServiceModel(){
-                        Service_cost = obj.Service_cost,
-                        Service_name  = obj.Service_name,
-                        Service_purpose = obj.Service_purpose
-                });
-            }
-
-        StateHasChanged();
-
-    }
-    public void NewService(){
-        NavManager.NavigateTo("/Newservice",true); 
-    }
-    private async void DeleteService(string Service_name){
+    private EditServiceModel EditServiceModel = new();
+    [Parameter]
+    public string Service_name { get; set; }
+    [Parameter]
+    public string Service_purpose{ get; set; }
+    [Parameter]
+    public string Service_cost{ get; set; }
+    public async void HandleValidSubmit(){
         using var client = new HttpClient();
-        var result = await client.GetStringAsync("http://0.0.0.0:800/Services/del_Services/"+Service_name);
-        NavManager.NavigateTo("/Services",true); 
+        var result = await client.GetStringAsync("http://0.0.0.0:800/Services/update_Services/"+Service_name+"/"+EditServiceModel.Service_purpose+"/"+EditServiceModel.Service_cost.ToString("0.0"));
+        dynamic data = JObject.Parse(result);
+        Console.WriteLine(data.Status);
+        if (data.Status=="true"){         
+            NavManager.NavigateTo("/services",true); 
+        } 
+        else {
+            await JsRuntime.InvokeVoidAsync("alert", "Error!");
+        }
     }
-    private void EditRedirect(string Service_name, string Service_purpose, double Service_cost){
-         NavManager.NavigateTo("/editservice/"+Service_name+"/"+Service_purpose+"/"+Service_cost.ToString(),true); 
-    }
+
 
 #line default
 #line hidden

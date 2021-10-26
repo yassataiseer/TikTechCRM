@@ -1,0 +1,62 @@
+@page "/editservice/{Service_name}/{Service_purpose}/{Service_cost}"
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <h1>Edit Service:</h1>
+</head>
+<div class="card">
+<div class="container">
+<EditForm Model="@EditServiceModel" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <h4>Service Name:</h4>
+    <h6>***Cant be changed!!</h6>
+    <InputText type="text" id="Service_name" @bind-Value="@Service_name" readonly/>
+    <br>
+    <h4>Service Purpose:</h4>
+    <InputText type="text" id="Service_purpose" placeholder="@Service_purpose" @bind-Value="EditServiceModel.Service_purpose" />
+    <h4>Price:</h4>
+    <InputNumber type=float min="1" id="Service_cost" placeholder="@Service_cost" @bind-Value="EditServiceModel.Service_cost" />
+    <br>
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button> 
+    <ValidationSummary />
+</EditForm>
+</div>
+</div>
+</html>
+
+
+@code{
+    @using System.Net.Http
+    @using System.Text 
+    @using System.Net.Http.Json
+    @using System.Web
+    @using Newtonsoft.Json.Linq
+    @using Newtonsoft.Json
+    @inject NavigationManager NavManager
+    @inject NavigationManager UriHelper
+    @inject IJSRuntime JsRuntime;
+
+    private EditServiceModel EditServiceModel = new();
+    [Parameter]
+    public string Service_name { get; set; }
+    [Parameter]
+    public string Service_purpose{ get; set; }
+    [Parameter]
+    public string Service_cost{ get; set; }
+    public async void HandleValidSubmit(){
+        using var client = new HttpClient();
+        var result = await client.GetStringAsync("http://0.0.0.0:800/Services/update_Services/"+Service_name+"/"+EditServiceModel.Service_purpose+"/"+EditServiceModel.Service_cost.ToString("0.0"));
+        dynamic data = JObject.Parse(result);
+        Console.WriteLine(data.Status);
+        if (data.Status=="true"){         
+            NavManager.NavigateTo("/services",true); 
+        } 
+        else {
+            await JsRuntime.InvokeVoidAsync("alert", "Error!");
+        }
+    }
+
+}
