@@ -203,39 +203,6 @@
         }
       },
       {
-        "HashCode": 2118161294,
-        "Kind": "Components.Component",
-        "Name": "TikTechCRM.Pages.NewService",
-        "AssemblyName": "TikTechCRM",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "NewService"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TikTechCRM.Pages.NewService"
-        }
-      },
-      {
-        "HashCode": -1473995791,
-        "Kind": "Components.Component",
-        "Name": "TikTechCRM.Pages.NewService",
-        "AssemblyName": "TikTechCRM",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "TikTechCRM.Pages.NewService"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TikTechCRM.Pages.NewService",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": 1472091817,
         "Kind": "Components.Component",
         "Name": "TikTechCRM.Pages.Login",
@@ -456,6 +423,72 @@
         }
       },
       {
+        "HashCode": 1793748654,
+        "Kind": "Components.Component",
+        "Name": "TikTechCRM.Pages.Index",
+        "AssemblyName": "TikTechCRM",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Index"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TikTechCRM.Pages.Index"
+        }
+      },
+      {
+        "HashCode": 272386427,
+        "Kind": "Components.Component",
+        "Name": "TikTechCRM.Pages.Index",
+        "AssemblyName": "TikTechCRM",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "TikTechCRM.Pages.Index"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TikTechCRM.Pages.Index",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 2118161294,
+        "Kind": "Components.Component",
+        "Name": "TikTechCRM.Pages.NewService",
+        "AssemblyName": "TikTechCRM",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "NewService"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TikTechCRM.Pages.NewService"
+        }
+      },
+      {
+        "HashCode": -1473995791,
+        "Kind": "Components.Component",
+        "Name": "TikTechCRM.Pages.NewService",
+        "AssemblyName": "TikTechCRM",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "TikTechCRM.Pages.NewService"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TikTechCRM.Pages.NewService",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": -1802928743,
         "Kind": "Components.Component",
         "Name": "TikTechCRM.Pages.Inventory",
@@ -489,35 +522,35 @@
         }
       },
       {
-        "HashCode": 1793748654,
+        "HashCode": -284945501,
         "Kind": "Components.Component",
-        "Name": "TikTechCRM.Pages.Index",
+        "Name": "TikTechCRM.Pages.NewInventory",
         "AssemblyName": "TikTechCRM",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "Index"
+            "TagName": "NewInventory"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TikTechCRM.Pages.Index"
+          "Common.TypeName": "TikTechCRM.Pages.NewInventory"
         }
       },
       {
-        "HashCode": 272386427,
+        "HashCode": -733509910,
         "Kind": "Components.Component",
-        "Name": "TikTechCRM.Pages.Index",
+        "Name": "TikTechCRM.Pages.NewInventory",
         "AssemblyName": "TikTechCRM",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "TikTechCRM.Pages.Index"
+            "TagName": "TikTechCRM.Pages.NewInventory"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TikTechCRM.Pages.Index",
+          "Common.TypeName": "TikTechCRM.Pages.NewInventory",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -16295,6 +16328,11 @@
     {
       "FilePath": "/Users/yassa/TikTechCRM/Pages/EmptyLayout.razor",
       "TargetPath": "Pages\\EmptyLayout.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/Users/yassa/TikTechCRM/Pages/NewInventory.razor",
+      "TargetPath": "Pages\\NewInventory.razor",
       "FileKind": "component"
     },
     {

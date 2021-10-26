@@ -90,42 +90,42 @@ using Microsoft.AspNetCore.Authorization;
 #line hidden
 #nullable disable
 #nullable restore
-#line 68 "/Users/yassa/TikTechCRM/Pages/Inventory.razor"
+#line 43 "/Users/yassa/TikTechCRM/Pages/NewInventory.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 69 "/Users/yassa/TikTechCRM/Pages/Inventory.razor"
+#line 44 "/Users/yassa/TikTechCRM/Pages/NewInventory.razor"
 using System.Text;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 70 "/Users/yassa/TikTechCRM/Pages/Inventory.razor"
+#line 45 "/Users/yassa/TikTechCRM/Pages/NewInventory.razor"
 using System.Net.Http.Json;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 71 "/Users/yassa/TikTechCRM/Pages/Inventory.razor"
+#line 46 "/Users/yassa/TikTechCRM/Pages/NewInventory.razor"
 using System.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 72 "/Users/yassa/TikTechCRM/Pages/Inventory.razor"
+#line 47 "/Users/yassa/TikTechCRM/Pages/NewInventory.razor"
 using Newtonsoft.Json.Linq;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 73 "/Users/yassa/TikTechCRM/Pages/Inventory.razor"
+#line 48 "/Users/yassa/TikTechCRM/Pages/NewInventory.razor"
 using Newtonsoft.Json;
 
 #line default
@@ -138,8 +138,8 @@ using Newtonsoft.Json;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/inventory")]
-    public partial class Inventory : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/newinventory")]
+    public partial class NewInventory : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -147,40 +147,32 @@ using Newtonsoft.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 78 "/Users/yassa/TikTechCRM/Pages/Inventory.razor"
-      
+#line 52 "/Users/yassa/TikTechCRM/Pages/NewInventory.razor"
     private dynamic validate;
-    private List<InventoryModel> InventoryData = new();
+    private InventoryFormModel InventoryFormModel = new();
 
+    private async void  HandleValidSubmit()
+    {
+        using var client = new HttpClient();
+        var result = await client.GetStringAsync("http://0.0.0.0:800/Inventory/mk_Inventory/"+InventoryFormModel.Item+"/"+InventoryFormModel.Barcode+"/"+InventoryFormModel.Price.ToString("0.00")+"/"+InventoryFormModel.Quantity+"/"+InventoryFormModel.Status);
+                                                //http://0.0.0.0:800/Inventory/mk_Inventory/keyboard/11244321/15.0/30/almost%20empty
+        dynamic data = JObject.Parse(result);
+        Console.WriteLine(data.Status);
+        if (data.Status=="true"){
+            NavManager.NavigateTo("/inventory",true); 
+        } 
+        else {
+            await JsRuntime.InvokeVoidAsync("alert", "Service is already taken");
+        }        
+    }
 
     protected override async Task OnInitializedAsync(){
         validate =  await JsRuntime.InvokeAsync<string>("BlazorGetLocalStorage","Username:");
        string value = (string)validate;
+       
        if(value==null){
             NavManager.NavigateTo("/",true); 
-       }
-        using var client = new HttpClient();
-        var result = await client.GetStringAsync("http://0.0.0.0:800/Inventory/grab_Inventory");
-
-        JArray data = JArray.Parse(result);
-        foreach (dynamic obj in data){
-                InventoryData.Add(new InventoryModel(){
-                    Barcode = obj.Barcode,
-                    Item  = obj.Item,
-                    Price = obj.Price,
-                    Quantity = obj.Quantity,
-                    Status = obj.Status
-            });
-        }
-        StateHasChanged();
-    }
-    private async void DeleteInventory(string Item){
-        using var client = new HttpClient();
-        var result = await client.GetStringAsync("http://0.0.0.0:800/Inventory/del_Inventory/"+Item);
-        NavManager.NavigateTo("/inventory",true); 
-    }
-    void Redirect(){
-        NavManager.NavigateTo("/newinventory",true); 
+       }        
     }
 
 #line default
@@ -189,7 +181,6 @@ using Newtonsoft.Json;
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime JsRuntime { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager UriHelper { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavManager { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IModalService Modal { get; set; }
     }
 }
 #pragma warning restore 1591

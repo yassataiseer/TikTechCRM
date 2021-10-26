@@ -7,7 +7,7 @@
 }else{
 <h1>Inventory</h1>
     <br>
-    <button  class="btn btn-info">Add Inventory</button> 
+    <button  class="btn btn-info" @onclick="() => Redirect()">Add Inventory</button> 
     <br>
     <table class="table">
         <thead>
@@ -105,5 +105,8 @@
         using var client = new HttpClient();
         var result = await client.GetStringAsync("http://0.0.0.0:800/Inventory/del_Inventory/"+Item);
         NavManager.NavigateTo("/inventory",true); 
+    }
+    void Redirect(){
+        NavManager.NavigateTo("/newinventory",true); 
     }
 }

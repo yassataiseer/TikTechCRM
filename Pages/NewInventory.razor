@@ -1,0 +1,77 @@
+@page "/newinventory"
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <h1>Add to Inventory:</h1>
+</head>
+<div class="card">
+<div class="container">
+<EditForm Model="@InventoryFormModel" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <h4>Item Name:</h4>
+    <InputText type="text" id="Item" @bind-Value="InventoryFormModel.Item" />
+    <br>
+    <h4>Barcode:</h4>
+    <InputText type="text" id="Barcode" @bind-Value="InventoryFormModel.Barcode" />
+    <h4>Price:</h4>
+    <InputNumber type=float min="1" id="Price" @bind-Value="InventoryFormModel.Price" />
+    <h4>Quantity:</h4>
+    <InputNumber type=number min="1" id="Quantity" @bind-Value="InventoryFormModel.Quantity" />
+    <h4>Status: </h4>
+    <InputSelect @bind-Value="InventoryFormModel.Status">
+      <option value=""></option>
+         <option value="Empty">Empty</option>
+         <option value="Full">Full</option>
+         <option value="Almost empty">Almost empty</option>
+
+   </InputSelect>
+
+    <br>
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button> 
+    <ValidationSummary />
+</EditForm>
+</div>
+</div>
+</html>
+
+
+@code{
+    @using System.Net.Http
+    @using System.Text 
+    @using System.Net.Http.Json
+    @using System.Web
+    @using Newtonsoft.Json.Linq
+    @using Newtonsoft.Json
+    @inject NavigationManager NavManager
+    @inject NavigationManager UriHelper
+    @inject IJSRuntime JsRuntime;
+    private dynamic validate;
+    private InventoryFormModel InventoryFormModel = new();
+
+    private async void  HandleValidSubmit()
+    {
+        using var client = new HttpClient();
+        var result = await client.GetStringAsync("http://0.0.0.0:800/Inventory/mk_Inventory/"+InventoryFormModel.Item+"/"+InventoryFormModel.Barcode+"/"+InventoryFormModel.Price.ToString("0.00")+"/"+InventoryFormModel.Quantity+"/"+InventoryFormModel.Status);
+        dynamic data = JObject.Parse(result);
+        Console.WriteLine(data.Status);
+        if (data.Status=="true"){
+            NavManager.NavigateTo("/inventory",true); 
+        } 
+        else {
+            await JsRuntime.InvokeVoidAsync("alert", "Service is already taken");
+        }        
+    }
+
+    protected override async Task OnInitializedAsync(){
+        validate =  await JsRuntime.InvokeAsync<string>("BlazorGetLocalStorage","Username:");
+       string value = (string)validate;
+       
+       if(value==null){
+            NavManager.NavigateTo("/",true); 
+       }        
+    }
+}
