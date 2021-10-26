@@ -30,8 +30,7 @@
                         <td bgcolor="#adffc3">@Current_Inventory.Price</td>
                         <td bgcolor="#adffc3">@Current_Inventory.Quantity</td>
                         <td bgcolor="#adffc3">@Current_Inventory.Status</td>
-                        <button class="btn btn-primary" > Edit</button>
-                        <button type="button" class="btn btn-danger" @onclick="() => DeleteInventory(Current_Inventory.Item)">Delete</button>
+
                         <br>
                          }
                          else if(Current_Inventory.Status.ToLower()=="almost empty"){
@@ -40,8 +39,7 @@
                         <td bgcolor="yellow">@Current_Inventory.Price</td>
                         <td bgcolor="yellow">@Current_Inventory.Quantity</td>       
                         <td bgcolor="yellow">@Current_Inventory.Status</td>                             
-                        <button class="btn btn-primary" > Edit</button>
-                        <button type="button" class="btn btn-danger" @onclick="() => DeleteInventory(Current_Inventory.Item)">Delete</button>
+
                         <br>                      
                          }
                          else{
@@ -50,10 +48,10 @@
                         <td bgcolor="#ff9e9e">@Current_Inventory.Price</td>
                         <td bgcolor="#ff9e9e">@Current_Inventory.Quantity</td>
                         <td bgcolor="#ff9e9e">@Current_Inventory.Status</td>
-                        <button class="btn btn-primary" > Edit</button>
-                        <button type="button" class="btn btn-danger" @onclick="() => DeleteInventory(Current_Inventory.Item)">Delete</button>
                         <br>
                          }
+                        <button class="btn btn-primary" @onclick="() => EditRedirect(Current_Inventory.Item,Current_Inventory.Barcode,Current_Inventory.Price,Current_Inventory.Quantity,Current_Inventory.Status)"> Edit</button>
+                        <button type="button" class="btn btn-danger" @onclick="() => DeleteInventory(Current_Inventory.Item)">Delete</button>
 
                         
                     </tr>
@@ -108,5 +106,9 @@
     }
     void Redirect(){
         NavManager.NavigateTo("/newinventory",true); 
+    }
+    private void EditRedirect(string Item,string Barcode, double Price, int Quantity, string Status)
+    {
+        NavManager.NavigateTo("/editinventory/"+Item+"/"+Barcode+"/"+Price.ToString("0.00")+"/"+Quantity.ToString()+"/"+Status,true); 
     }
 }

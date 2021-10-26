@@ -90,42 +90,42 @@ using Microsoft.AspNetCore.Authorization;
 #line hidden
 #nullable disable
 #nullable restore
-#line 68 "/Users/yassa/TikTechCRM/Pages/Inventory.razor"
+#line 66 "/Users/yassa/TikTechCRM/Pages/Inventory.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 69 "/Users/yassa/TikTechCRM/Pages/Inventory.razor"
+#line 67 "/Users/yassa/TikTechCRM/Pages/Inventory.razor"
 using System.Text;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 70 "/Users/yassa/TikTechCRM/Pages/Inventory.razor"
+#line 68 "/Users/yassa/TikTechCRM/Pages/Inventory.razor"
 using System.Net.Http.Json;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 71 "/Users/yassa/TikTechCRM/Pages/Inventory.razor"
+#line 69 "/Users/yassa/TikTechCRM/Pages/Inventory.razor"
 using System.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 72 "/Users/yassa/TikTechCRM/Pages/Inventory.razor"
+#line 70 "/Users/yassa/TikTechCRM/Pages/Inventory.razor"
 using Newtonsoft.Json.Linq;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 73 "/Users/yassa/TikTechCRM/Pages/Inventory.razor"
+#line 71 "/Users/yassa/TikTechCRM/Pages/Inventory.razor"
 using Newtonsoft.Json;
 
 #line default
@@ -147,7 +147,7 @@ using Newtonsoft.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 78 "/Users/yassa/TikTechCRM/Pages/Inventory.razor"
+#line 76 "/Users/yassa/TikTechCRM/Pages/Inventory.razor"
       
     private dynamic validate;
     private List<InventoryModel> InventoryData = new();
@@ -181,6 +181,10 @@ using Newtonsoft.Json;
     }
     void Redirect(){
         NavManager.NavigateTo("/newinventory",true); 
+    }
+    private void EditRedirect(string Item,string Barcode, double Price, int Quantity, string Status)
+    {
+        NavManager.NavigateTo("/editinventory/"+Item+"/"+Barcode+"/"+Price.ToString("0.00")+"/"+Quantity.ToString()+"/"+Status,true); 
     }
 
 #line default

@@ -90,42 +90,42 @@ using Microsoft.AspNetCore.Authorization;
 #line hidden
 #nullable disable
 #nullable restore
-#line 43 "/Users/yassa/TikTechCRM/Pages/NewInventory.razor"
+#line 43 "/Users/yassa/TikTechCRM/Pages/EditInventory.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 44 "/Users/yassa/TikTechCRM/Pages/NewInventory.razor"
+#line 44 "/Users/yassa/TikTechCRM/Pages/EditInventory.razor"
 using System.Text;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 45 "/Users/yassa/TikTechCRM/Pages/NewInventory.razor"
+#line 45 "/Users/yassa/TikTechCRM/Pages/EditInventory.razor"
 using System.Net.Http.Json;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 46 "/Users/yassa/TikTechCRM/Pages/NewInventory.razor"
+#line 46 "/Users/yassa/TikTechCRM/Pages/EditInventory.razor"
 using System.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 47 "/Users/yassa/TikTechCRM/Pages/NewInventory.razor"
+#line 47 "/Users/yassa/TikTechCRM/Pages/EditInventory.razor"
 using Newtonsoft.Json.Linq;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 48 "/Users/yassa/TikTechCRM/Pages/NewInventory.razor"
+#line 48 "/Users/yassa/TikTechCRM/Pages/EditInventory.razor"
 using Newtonsoft.Json;
 
 #line default
@@ -138,8 +138,8 @@ using Newtonsoft.Json;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/newinventory")]
-    public partial class NewInventory : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/editinventory/{Item}/{Barcode}/{Price}/{Quantity}/{Status}")]
+    public partial class EditInventory : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -147,21 +147,31 @@ using Newtonsoft.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 52 "/Users/yassa/TikTechCRM/Pages/NewInventory.razor"
+#line 52 "/Users/yassa/TikTechCRM/Pages/EditInventory.razor"
     private dynamic validate;
-    private InventoryFormModel InventoryFormModel = new();
+    private EditInventoryModel EditInventoryModel = new();
 
+    [Parameter]
+    public string Barcode { get; set; }
+    [Parameter]
+    public string Item { get; set; }
+    [Parameter]
+    public string Price { get; set; }
+    [Parameter]
+    public string Quantity { get; set; }
+    [Parameter]    
+    public string Status { get; set; }
     private async void  HandleValidSubmit()
     {
         using var client = new HttpClient();
-        var result = await client.GetStringAsync("http://0.0.0.0:800/Inventory/mk_Inventory/"+InventoryFormModel.Item+"/"+InventoryFormModel.Barcode+"/"+InventoryFormModel.Price.ToString("0.00")+"/"+InventoryFormModel.Quantity+"/"+InventoryFormModel.Status);
+        var result = await client.GetStringAsync("http://0.0.0.0:800/Inventory/update_Inventory/"+Item+"/"+EditInventoryModel.Barcode+"/"+EditInventoryModel.Price.ToString("0.00")+"/"+EditInventoryModel.Quantity+"/"+EditInventoryModel.Status);
         dynamic data = JObject.Parse(result);
         Console.WriteLine(data.Status);
         if (data.Status=="true"){
             NavManager.NavigateTo("/inventory",true); 
         } 
         else {
-            await JsRuntime.InvokeVoidAsync("alert", "Service is already taken");
+            await JsRuntime.InvokeVoidAsync("alert", "Error");
         }        
     }
 
