@@ -24,7 +24,7 @@
                 @foreach (var Current_Inventory in InventoryData)
                 {
                     <tr>
-                         @if(Current_Inventory.Status.ToLower()=="full"){
+                         @if(Current_Inventory.Quantity>0){
                         <td bgcolor="#adffc3">@Current_Inventory.Item</td>
                         <td bgcolor="#adffc3">@Current_Inventory.Barcode</td>
                         <td bgcolor="#adffc3">@Current_Inventory.Price</td>
@@ -32,15 +32,6 @@
                         <td bgcolor="#adffc3">@Current_Inventory.Status</td>
 
                         <br>
-                         }
-                         else if(Current_Inventory.Status.ToLower()=="almost empty"){
-                        <td bgcolor="yellow">@Current_Inventory.Item</td>
-                        <td bgcolor="yellow">@Current_Inventory.Barcode</td>
-                        <td bgcolor="yellow">@Current_Inventory.Price</td>
-                        <td bgcolor="yellow">@Current_Inventory.Quantity</td>       
-                        <td bgcolor="yellow">@Current_Inventory.Status</td>                             
-
-                        <br>                      
                          }
                          else{
                         <td bgcolor="#ff9e9e">@Current_Inventory.Item</td>

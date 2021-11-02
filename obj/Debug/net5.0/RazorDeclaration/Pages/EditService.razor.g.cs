@@ -149,13 +149,15 @@ using Newtonsoft.Json;
 #nullable restore
 #line 41 "/Users/yassa/TikTechCRM/Pages/EditService.razor"
 
-    private EditServiceModel EditServiceModel = new();
+    public EditServiceModel EditServiceModel = new();
     [Parameter]
     public string Service_name { get; set; }
     [Parameter]
     public string Service_purpose{ get; set; }
     [Parameter]
     public string Service_cost{ get; set; }
+    private dynamic validate;
+
     public async void HandleValidSubmit(){
         using var client = new HttpClient();
         var result = await client.GetStringAsync("http://0.0.0.0:800/Services/update_Services/"+Service_name+"/"+EditServiceModel.Service_purpose+"/"+EditServiceModel.Service_cost.ToString("0.0"));
@@ -168,7 +170,16 @@ using Newtonsoft.Json;
             await JsRuntime.InvokeVoidAsync("alert", "Error!");
         }
     }
+    protected override async Task OnInitializedAsync(){
+        validate =  await JsRuntime.InvokeAsync<string>("BlazorGetLocalStorage","Username:");
+       string value = (string)validate;
+       EditServiceModel.Service_cost = Convert.ToDouble(Service_cost);
+       EditServiceModel.Service_purpose = Service_purpose;
 
+       if(value==null){
+            NavManager.NavigateTo("/",true); 
+       }        
+    }
 
 #line default
 #line hidden

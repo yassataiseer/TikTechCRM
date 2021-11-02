@@ -149,8 +149,8 @@ using Newtonsoft.Json;
 #nullable restore
 #line 52 "/Users/yassa/TikTechCRM/Pages/EditInventory.razor"
     private dynamic validate;
-    private EditInventoryModel EditInventoryModel = new();
-
+    public EditInventoryModel EditInventoryModel = new();
+    
     [Parameter]
     public string Barcode { get; set; }
     [Parameter]
@@ -161,6 +161,8 @@ using Newtonsoft.Json;
     public string Quantity { get; set; }
     [Parameter]    
     public string Status { get; set; }
+
+    
     private async void  HandleValidSubmit()
     {
         using var client = new HttpClient();
@@ -178,7 +180,11 @@ using Newtonsoft.Json;
     protected override async Task OnInitializedAsync(){
         validate =  await JsRuntime.InvokeAsync<string>("BlazorGetLocalStorage","Username:");
        string value = (string)validate;
-       
+       EditInventoryModel.Barcode = Barcode;
+       EditInventoryModel.Price = Convert.ToDouble(Price);
+       EditInventoryModel.Quantity = Convert.ToInt32(Quantity);
+       EditInventoryModel.Status = Status;
+
        if(value==null){
             NavManager.NavigateTo("/",true); 
        }        

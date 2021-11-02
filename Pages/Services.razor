@@ -20,9 +20,10 @@
                 <tr>
                     <td>@Services.Service_name</td>
                     <td>@Services.Service_purpose</td>
-                    <td>$@Services.Service_cost <button class="btn btn-primary" @onclick="() => EditRedirect(Services.Service_name,Services.Service_purpose,Services.Service_cost)" >Edit</button>
+                    <td>$@Services.Service_cost</td>
+                    <button class="btn btn-primary" @onclick="() => EditRedirect(Services.Service_name,Services.Service_purpose,Services.Service_cost)" >Edit</button>
                     <button type="button" class="btn btn-danger" @onclick="() => DeleteService(Services.Service_name)">Delete</button>
-                     </td>
+                     
                 </tr>
                 }
         </tbody>

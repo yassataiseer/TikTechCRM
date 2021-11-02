@@ -20,7 +20,7 @@
     <h4>Price:</h4>
     <InputNumber type=float min="1" id="Price" placeholder="@Price" @bind-Value="EditInventoryModel.Price" />
     <h4>Quantity:</h4>
-    <InputNumber type=number min="1" id="Quantity"  placeholder="@Quantity" @bind-Value="EditInventoryModel.Quantity" />
+    <InputNumber type=number min="0" id="Quantity"  placeholder="@Quantity" @bind-Value="EditInventoryModel.Quantity" />
     <h4>Status: </h4>
     <InputSelect placeholder="@Status"  @bind-Value="EditInventoryModel.Status">
       <option value=""></option>
@@ -50,8 +50,8 @@
     @inject NavigationManager UriHelper
     @inject IJSRuntime JsRuntime;
     private dynamic validate;
-    private EditInventoryModel EditInventoryModel = new();
-
+    public EditInventoryModel EditInventoryModel = new();
+    
     [Parameter]
     public string Barcode { get; set; }
     [Parameter]
@@ -62,6 +62,8 @@
     public string Quantity { get; set; }
     [Parameter]    
     public string Status { get; set; }
+
+    
     private async void  HandleValidSubmit()
     {
         using var client = new HttpClient();
@@ -79,7 +81,11 @@
     protected override async Task OnInitializedAsync(){
         validate =  await JsRuntime.InvokeAsync<string>("BlazorGetLocalStorage","Username:");
        string value = (string)validate;
-       
+       EditInventoryModel.Barcode = Barcode;
+       EditInventoryModel.Price = Convert.ToDouble(Price);
+       EditInventoryModel.Quantity = Convert.ToInt32(Quantity);
+       EditInventoryModel.Status = Status;
+
        if(value==null){
             NavManager.NavigateTo("/",true); 
        }        

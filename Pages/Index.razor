@@ -27,11 +27,11 @@
                     if(users.Username!="Admin"){
                     <tr>
                         <td>@users.Username</td>
-                        <td>@users.Password 
+                        <td>@users.Password </td>
 
                         <button class="btn btn-primary" @onclick="() => EditRedirect(users.Username,users.Password)" > Edit</button>
                         <button type="button" class="btn btn-danger" @onclick="() => DeleteUser(users.Username,users.Password)"  >Delete</button>
-                        </td>
+                        
                     </tr>
                     }
                 }

@@ -149,12 +149,14 @@ using Newtonsoft.Json;
 #nullable restore
 #line 38 "/Users/yassa/TikTechCRM/Pages/EditUser.razor"
 
-    private EditLoginModel EditLoginModel = new();
+    public EditLoginModel EditLoginModel = new();
 
     [Parameter]
     public string Username { get; set; }
     [Parameter]
+    
     public string Password{ get; set; }
+    private dynamic validate;
     public async void HandleValidSubmit(){
         using var client = new HttpClient();
         var result = await client.GetStringAsync("http://0.0.0.0:800/Users/update_user/"+Username+"/"+EditLoginModel.Password);
@@ -166,6 +168,14 @@ using Newtonsoft.Json;
         else {
             await JsRuntime.InvokeVoidAsync("alert", "This username is taken!");
         }
+    }
+    protected override async Task OnInitializedAsync(){
+        validate =  await JsRuntime.InvokeAsync<string>("BlazorGetLocalStorage","Username:");
+       string value = (string)validate;
+       EditLoginModel.Password = Password;
+       if(value==null){
+            NavManager.NavigateTo("/",true); 
+       }        
     }
 
 
