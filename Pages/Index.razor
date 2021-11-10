@@ -3,6 +3,8 @@
 
 <html>
 <h1>Users</h1>
+Welcome to your new <Tooltip Text="Blazor is awesome!">app</Tooltip>.
+
 @if(isAdmin){
     @if (UserData == null)
     {
@@ -29,8 +31,8 @@
                         <td>@users.Username</td>
                         <td>@users.Password </td>
 
-                        <button class="btn btn-primary" @onclick="() => EditRedirect(users.Username,users.Password)" > Edit</button>
-                        <button type="button" class="btn btn-danger" @onclick="() => DeleteUser(users.Username,users.Password)"  >Delete</button>
+                        <button class="btn btn-primary" @onclick="() => EditRedirect(users.Username,users.Password)" > <i class="oi oi-pencil"></i></button>
+                        <button type="button" class="btn btn-danger" @onclick="() => DeleteUser(users.Username,users.Password)"  ><i class="oi oi-trash"></i></button>
                         
                     </tr>
                     }
@@ -38,7 +40,6 @@
             </tbody>
         </table>
                 }
-    <button  class="btn btn-info" @onclick="() => NewUser()">Add a User</button> 
 }
 else{
     <h3>You are not Admin you don't have access to this page</h3>

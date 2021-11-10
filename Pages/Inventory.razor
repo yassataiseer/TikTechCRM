@@ -7,7 +7,7 @@
 }else{
 <h1>Inventory</h1>
     <br>
-    <button  class="btn btn-info" @onclick="() => Redirect()">Add Inventory</button> 
+    <button  class="btn btn-info" @onclick="() => Redirect()"><i class="oi oi-plus"></i> Inventory</button> 
     <br>
     <table class="table">
         <thead>
@@ -41,10 +41,8 @@
                         <td bgcolor="#ff9e9e">@Current_Inventory.Status</td>
                         <br>
                          }
-                        <button class="btn btn-primary" @onclick="() => EditRedirect(Current_Inventory.Item,Current_Inventory.Barcode,Current_Inventory.Price,Current_Inventory.Quantity,Current_Inventory.Status)"> Edit</button>
-                        <button type="button" class="btn btn-danger" @onclick="() => DeleteInventory(Current_Inventory.Item)">Delete</button>
-
-                        
+                        <button class="btn btn-primary" @onclick="() => EditRedirect(Current_Inventory.Item,Current_Inventory.Barcode,Current_Inventory.Price,Current_Inventory.Quantity,Current_Inventory.Status)"><i class="oi oi-pencil"></i></button>
+                        <button type="button" class="btn btn-danger" @onclick="() => DeleteInventory(Current_Inventory.Item)"><i class="oi oi-trash"></i></button>
                     </tr>
                 }
         </tbody>
