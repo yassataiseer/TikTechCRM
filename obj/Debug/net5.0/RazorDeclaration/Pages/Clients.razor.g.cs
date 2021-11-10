@@ -187,6 +187,9 @@ using Newtonsoft.Json;
         NavManager.NavigateTo("/Clients",true); 
 
     }
+    private void EditRedirect(string Username, string Address, string Postal_code, string Email, string Phone_number, int id){
+        NavManager.NavigateTo("/EditClient/"+Username+"/"+Address+"/"+Postal_code+"/"+Email+"/"+Phone_number+"/"+id.ToString());
+    }
 
 
 

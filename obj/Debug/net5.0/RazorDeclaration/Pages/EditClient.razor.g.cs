@@ -90,42 +90,42 @@ using Microsoft.AspNetCore.Authorization;
 #line hidden
 #nullable disable
 #nullable restore
-#line 44 "/Users/yassa/TikTechCRM/Pages/NewInventory.razor"
+#line 38 "/Users/yassa/TikTechCRM/Pages/EditClient.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 45 "/Users/yassa/TikTechCRM/Pages/NewInventory.razor"
+#line 39 "/Users/yassa/TikTechCRM/Pages/EditClient.razor"
 using System.Text;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 46 "/Users/yassa/TikTechCRM/Pages/NewInventory.razor"
+#line 40 "/Users/yassa/TikTechCRM/Pages/EditClient.razor"
 using System.Net.Http.Json;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 47 "/Users/yassa/TikTechCRM/Pages/NewInventory.razor"
+#line 41 "/Users/yassa/TikTechCRM/Pages/EditClient.razor"
 using System.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 48 "/Users/yassa/TikTechCRM/Pages/NewInventory.razor"
+#line 42 "/Users/yassa/TikTechCRM/Pages/EditClient.razor"
 using Newtonsoft.Json.Linq;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 49 "/Users/yassa/TikTechCRM/Pages/NewInventory.razor"
+#line 43 "/Users/yassa/TikTechCRM/Pages/EditClient.razor"
 using Newtonsoft.Json;
 
 #line default
@@ -138,8 +138,8 @@ using Newtonsoft.Json;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/newinventory")]
-    public partial class NewInventory : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/EditClient/{Username}/{Address}/{Postal_code}/{Email}/{Phone_number}/{id}")]
+    public partial class EditClient : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -147,32 +147,53 @@ using Newtonsoft.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 53 "/Users/yassa/TikTechCRM/Pages/NewInventory.razor"
-    private dynamic validate;
-    private InventoryFormModel InventoryFormModel = new();
+#line 47 "/Users/yassa/TikTechCRM/Pages/EditClient.razor"
 
-    private async void  HandleValidSubmit()
-    {
+    public ClientFormModel ClientFormModel = new();
+    [Parameter]
+    public string Username { get; set; }
+    [Parameter]
+    public string Address{ get; set;} 
+
+    [Parameter]
+    public string Postal_code{get; set;}
+
+    [Parameter]
+    public string Email{get; set;}
+
+    [Parameter]
+    public string Phone_number{get; set;}
+
+    [Parameter]
+    public string Id{get; set;}
+    private dynamic validate;
+    public async void HandleValidSubmit(){
         using var client = new HttpClient();
-        var result = await client.GetStringAsync("http://0.0.0.0:800/Inventory/mk_Inventory/"+InventoryFormModel.Item+"/"+InventoryFormModel.Barcode+"/"+InventoryFormModel.Price.ToString("0.00")+"/"+InventoryFormModel.Quantity+"/"+InventoryFormModel.Status);
+        var result = await client.GetStringAsync("http://0.0.0.0:800/Clients/update_Client/"+ClientFormModel.Username+"/"+ClientFormModel.Address+"/"+ClientFormModel.Postal_code+"/"+ClientFormModel.Email+"/"+ClientFormModel.Phone_Number+"/"+Id.ToString());
+        // /update_Client/<string:Name>/<string:Address>/<string:Postal_code>/<string:Email>/<string:Phone_number>/<int:id>
         dynamic data = JObject.Parse(result);
         Console.WriteLine(data.Status);
-        if (data.Status=="true"){
-            NavManager.NavigateTo("/inventory",true); 
+        if (data.Status=="true"){         
+            NavManager.NavigateTo("/Clients",true); 
         } 
         else {
-            await JsRuntime.InvokeVoidAsync("alert", "Service is already taken");
+            await JsRuntime.InvokeVoidAsync("alert", "This username is taken!");
+        }
+    }
+    protected override async Task OnInitializedAsync(){
+        validate =  await JsRuntime.InvokeAsync<string>("BlazorGetLocalStorage","Username:");
+        string value = (string)validate;
+        ClientFormModel.Username = Username;
+        ClientFormModel.Address = Address;
+        ClientFormModel.Postal_code = Postal_code;
+        ClientFormModel.Email = Email;
+        ClientFormModel.Phone_Number = Phone_number;
+
+        if(value==null){
+            NavManager.NavigateTo("/",true); 
         }        
     }
 
-    protected override async Task OnInitializedAsync(){
-        validate =  await JsRuntime.InvokeAsync<string>("BlazorGetLocalStorage","Username:");
-       string value = (string)validate;
-       
-       if(value==null){
-            NavManager.NavigateTo("/",true); 
-       }        
-    }
 
 #line default
 #line hidden

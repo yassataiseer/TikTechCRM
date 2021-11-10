@@ -1,7 +1,7 @@
 @page "/Clients"
 <html>
 
-<h1>Inventory</h1>
+<h1>Clients</h1>
     @if(ClientData==null){
         <p><em>Loading...</em></p>
     }
@@ -29,7 +29,7 @@
                         <td>@Current_Client.Postal_code</td>
                         <td>@Current_Client.Email</td>
                         <td>@Current_Client.Phone_Number</td>
-                        <button class="btn btn-primary"> Edit</button>
+                        <button class="btn btn-primary" @onclick="() => EditRedirect(Current_Client.Username,Current_Client.Address,Current_Client.Postal_code,Current_Client.Email,Current_Client.Phone_Number,Current_Client.Id)"> Edit</button>
                         <button type="button" class="btn btn-danger" @onclick="() => DeleteClient(Current_Client.Id)"> Delete</button>
 
                         
@@ -90,6 +90,9 @@
         var result = await client.GetStringAsync("http://0.0.0.0:800/Clients/del_Client/"+id.ToString());
         NavManager.NavigateTo("/Clients",true); 
 
+    }
+    private void EditRedirect(string Username, string Address, string Postal_code, string Email, string Phone_number, int id){
+        NavManager.NavigateTo("/EditClient/"+Username+"/"+Address+"/"+Postal_code+"/"+Email+"/"+Phone_number+"/"+id.ToString());
     }
 
 

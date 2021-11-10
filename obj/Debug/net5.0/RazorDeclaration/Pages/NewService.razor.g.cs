@@ -90,42 +90,42 @@ using Microsoft.AspNetCore.Authorization;
 #line hidden
 #nullable disable
 #nullable restore
-#line 31 "/Users/yassa/TikTechCRM/Pages/NewService.razor"
+#line 32 "/Users/yassa/TikTechCRM/Pages/NewService.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 32 "/Users/yassa/TikTechCRM/Pages/NewService.razor"
+#line 33 "/Users/yassa/TikTechCRM/Pages/NewService.razor"
 using System.Text;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 33 "/Users/yassa/TikTechCRM/Pages/NewService.razor"
+#line 34 "/Users/yassa/TikTechCRM/Pages/NewService.razor"
 using System.Net.Http.Json;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 34 "/Users/yassa/TikTechCRM/Pages/NewService.razor"
+#line 35 "/Users/yassa/TikTechCRM/Pages/NewService.razor"
 using System.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 35 "/Users/yassa/TikTechCRM/Pages/NewService.razor"
+#line 36 "/Users/yassa/TikTechCRM/Pages/NewService.razor"
 using Newtonsoft.Json.Linq;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 36 "/Users/yassa/TikTechCRM/Pages/NewService.razor"
+#line 37 "/Users/yassa/TikTechCRM/Pages/NewService.razor"
 using Newtonsoft.Json;
 
 #line default
@@ -147,7 +147,7 @@ using Newtonsoft.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 40 "/Users/yassa/TikTechCRM/Pages/NewService.razor"
+#line 41 "/Users/yassa/TikTechCRM/Pages/NewService.razor"
     private dynamic validate;
     private ServiceFormModel ServiceFormModel = new();
 
