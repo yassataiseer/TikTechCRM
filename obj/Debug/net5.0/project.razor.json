@@ -8,35 +8,35 @@
   "ProjectWorkspaceState": {
     "TagHelpers": [
       {
-        "HashCode": 818648340,
+        "HashCode": 1189866937,
         "Kind": "Components.Component",
-        "Name": "TikTechCRM.App",
+        "Name": "TikTechCRM.Pages.Clients",
         "AssemblyName": "TikTechCRM",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "App"
+            "TagName": "Clients"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TikTechCRM.App"
+          "Common.TypeName": "TikTechCRM.Pages.Clients"
         }
       },
       {
-        "HashCode": -822349656,
+        "HashCode": -16815451,
         "Kind": "Components.Component",
-        "Name": "TikTechCRM.App",
+        "Name": "TikTechCRM.Pages.Clients",
         "AssemblyName": "TikTechCRM",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "TikTechCRM.App"
+            "TagName": "TikTechCRM.Pages.Clients"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TikTechCRM.App",
+          "Common.TypeName": "TikTechCRM.Pages.Clients",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -474,6 +474,39 @@
         }
       },
       {
+        "HashCode": -1802928743,
+        "Kind": "Components.Component",
+        "Name": "TikTechCRM.Pages.Inventory",
+        "AssemblyName": "TikTechCRM",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Inventory"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TikTechCRM.Pages.Inventory"
+        }
+      },
+      {
+        "HashCode": 202074486,
+        "Kind": "Components.Component",
+        "Name": "TikTechCRM.Pages.Inventory",
+        "AssemblyName": "TikTechCRM",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "TikTechCRM.Pages.Inventory"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TikTechCRM.Pages.Inventory",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": 1472091817,
         "Kind": "Components.Component",
         "Name": "TikTechCRM.Pages.Login",
@@ -503,6 +536,39 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "TikTechCRM.Pages.Login",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -921939323,
+        "Kind": "Components.Component",
+        "Name": "TikTechCRM.Pages.NewClient",
+        "AssemblyName": "TikTechCRM",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "NewClient"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TikTechCRM.Pages.NewClient"
+        }
+      },
+      {
+        "HashCode": -2121565679,
+        "Kind": "Components.Component",
+        "Name": "TikTechCRM.Pages.NewClient",
+        "AssemblyName": "TikTechCRM",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "TikTechCRM.Pages.NewClient"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TikTechCRM.Pages.NewClient",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -639,68 +705,35 @@
         }
       },
       {
-        "HashCode": -1802928743,
+        "HashCode": 818648340,
         "Kind": "Components.Component",
-        "Name": "TikTechCRM.Pages.Inventory",
+        "Name": "TikTechCRM.App",
         "AssemblyName": "TikTechCRM",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "Inventory"
+            "TagName": "App"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TikTechCRM.Pages.Inventory"
+          "Common.TypeName": "TikTechCRM.App"
         }
       },
       {
-        "HashCode": 202074486,
+        "HashCode": -822349656,
         "Kind": "Components.Component",
-        "Name": "TikTechCRM.Pages.Inventory",
+        "Name": "TikTechCRM.App",
         "AssemblyName": "TikTechCRM",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "TikTechCRM.Pages.Inventory"
+            "TagName": "TikTechCRM.App"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TikTechCRM.Pages.Inventory",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 1189866937,
-        "Kind": "Components.Component",
-        "Name": "TikTechCRM.Pages.Clients",
-        "AssemblyName": "TikTechCRM",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Clients"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TikTechCRM.Pages.Clients"
-        }
-      },
-      {
-        "HashCode": -16815451,
-        "Kind": "Components.Component",
-        "Name": "TikTechCRM.Pages.Clients",
-        "AssemblyName": "TikTechCRM",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "TikTechCRM.Pages.Clients"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TikTechCRM.Pages.Clients",
+          "Common.TypeName": "TikTechCRM.App",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -16460,6 +16493,11 @@
   },
   "RootNamespace": "TikTechCRM",
   "Documents": [
+    {
+      "FilePath": "/Users/yassa/TikTechCRM/Pages/NewClient.razor",
+      "TargetPath": "Pages\\NewClient.razor",
+      "FileKind": "component"
+    },
     {
       "FilePath": "/Users/yassa/TikTechCRM/Pages/FetchData.razor",
       "TargetPath": "Pages\\FetchData.razor",

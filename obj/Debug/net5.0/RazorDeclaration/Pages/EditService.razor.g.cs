@@ -90,42 +90,42 @@ using Microsoft.AspNetCore.Authorization;
 #line hidden
 #nullable disable
 #nullable restore
-#line 32 "/Users/yassa/TikTechCRM/Pages/EditService.razor"
+#line 33 "/Users/yassa/TikTechCRM/Pages/EditService.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 33 "/Users/yassa/TikTechCRM/Pages/EditService.razor"
+#line 34 "/Users/yassa/TikTechCRM/Pages/EditService.razor"
 using System.Text;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 34 "/Users/yassa/TikTechCRM/Pages/EditService.razor"
+#line 35 "/Users/yassa/TikTechCRM/Pages/EditService.razor"
 using System.Net.Http.Json;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 35 "/Users/yassa/TikTechCRM/Pages/EditService.razor"
+#line 36 "/Users/yassa/TikTechCRM/Pages/EditService.razor"
 using System.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 36 "/Users/yassa/TikTechCRM/Pages/EditService.razor"
+#line 37 "/Users/yassa/TikTechCRM/Pages/EditService.razor"
 using Newtonsoft.Json.Linq;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 37 "/Users/yassa/TikTechCRM/Pages/EditService.razor"
+#line 38 "/Users/yassa/TikTechCRM/Pages/EditService.razor"
 using Newtonsoft.Json;
 
 #line default
@@ -147,7 +147,7 @@ using Newtonsoft.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 41 "/Users/yassa/TikTechCRM/Pages/EditService.razor"
+#line 42 "/Users/yassa/TikTechCRM/Pages/EditService.razor"
 
     public EditServiceModel EditServiceModel = new();
     [Parameter]

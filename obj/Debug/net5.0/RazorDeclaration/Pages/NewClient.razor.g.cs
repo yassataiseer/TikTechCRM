@@ -90,42 +90,42 @@ using Microsoft.AspNetCore.Authorization;
 #line hidden
 #nullable disable
 #nullable restore
-#line 46 "/Users/yassa/TikTechCRM/Pages/Clients.razor"
+#line 40 "/Users/yassa/TikTechCRM/Pages/NewClient.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 47 "/Users/yassa/TikTechCRM/Pages/Clients.razor"
+#line 41 "/Users/yassa/TikTechCRM/Pages/NewClient.razor"
 using System.Text;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 48 "/Users/yassa/TikTechCRM/Pages/Clients.razor"
+#line 42 "/Users/yassa/TikTechCRM/Pages/NewClient.razor"
 using System.Net.Http.Json;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 49 "/Users/yassa/TikTechCRM/Pages/Clients.razor"
+#line 43 "/Users/yassa/TikTechCRM/Pages/NewClient.razor"
 using System.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 50 "/Users/yassa/TikTechCRM/Pages/Clients.razor"
+#line 44 "/Users/yassa/TikTechCRM/Pages/NewClient.razor"
 using Newtonsoft.Json.Linq;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 51 "/Users/yassa/TikTechCRM/Pages/Clients.razor"
+#line 45 "/Users/yassa/TikTechCRM/Pages/NewClient.razor"
 using Newtonsoft.Json;
 
 #line default
@@ -138,8 +138,8 @@ using Newtonsoft.Json;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/Clients")]
-    public partial class Clients : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/newclient")]
+    public partial class NewClient : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -147,48 +147,32 @@ using Newtonsoft.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 55 "/Users/yassa/TikTechCRM/Pages/Clients.razor"
-      
+#line 49 "/Users/yassa/TikTechCRM/Pages/NewClient.razor"
     private dynamic validate;
-    private List<ClientModel> ClientData = new();
+    private ClientFormModel ClientFormModel = new();
+
+    private async void  HandleValidSubmit()
+    {
+        using var client = new HttpClient();
+        var result = await client.GetStringAsync("http://0.0.0.0:800/Clients/mk_Client/"+ClientFormModel.Username+"/"+ClientFormModel.Address+"/"+ClientFormModel.Postal_code+"/"+ClientFormModel.Email+"/"+ClientFormModel.Phone_Number.ToString());
+        dynamic data = JObject.Parse(result);
+        Console.WriteLine(data.Status);
+        if (data.Status=="true"){
+            NavManager.NavigateTo("/Clients",true); 
+        } 
+        else {
+            await JsRuntime.InvokeVoidAsync("alert", "Error!");
+        }        
+    }
 
     protected override async Task OnInitializedAsync(){
         validate =  await JsRuntime.InvokeAsync<string>("BlazorGetLocalStorage","Username:");
        string value = (string)validate;
+       
        if(value==null){
             NavManager.NavigateTo("/",true); 
-       }
-        using var client = new HttpClient();
-        var result = await client.GetStringAsync("http://0.0.0.0:800/Clients/all_Clients");
-
-        JArray data = JArray.Parse(result);
-        foreach (dynamic obj in data){
-                ClientData.Add(new ClientModel(){
-                    Address = obj.Address,
-                    Deleted  = obj.Deleted,
-                    Email = obj.Email,
-                    Id = obj.Id,
-                    Phone_Number = obj.Phone_Number,
-                    Postal_code = obj.Postal_code,
-                    Username = obj.Username
-            });
-            Console.WriteLine(obj.Deleted);
-        }
-       
-        StateHasChanged();
+       }        
     }
-        private void Redirect()
-    {
-        NavManager.NavigateTo("/newclient",true); 
-    }
-    private async void DeleteClient(int id){
-        using var client = new HttpClient();
-        var result = await client.GetStringAsync("http://0.0.0.0:800/Clients/del_Client/"+id.ToString());
-        NavManager.NavigateTo("/Clients",true); 
-
-    }
-
-
 
 #line default
 #line hidden

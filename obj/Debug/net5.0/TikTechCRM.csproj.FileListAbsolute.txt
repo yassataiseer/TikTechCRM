@@ -665,3 +665,5 @@
 /Users/yassa/TikTechCRM/obj/Debug/net5.0/Razor/Pages/EditInventory.razor.g.cs
 /Users/yassa/TikTechCRM/obj/Debug/net5.0/RazorDeclaration/Pages/Clients.razor.g.cs
 /Users/yassa/TikTechCRM/obj/Debug/net5.0/Razor/Pages/Clients.razor.g.cs
+/Users/yassa/TikTechCRM/obj/Debug/net5.0/RazorDeclaration/Pages/NewClient.razor.g.cs
+/Users/yassa/TikTechCRM/obj/Debug/net5.0/Razor/Pages/NewClient.razor.g.cs

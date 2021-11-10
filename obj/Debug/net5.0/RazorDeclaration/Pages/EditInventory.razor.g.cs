@@ -90,42 +90,42 @@ using Microsoft.AspNetCore.Authorization;
 #line hidden
 #nullable disable
 #nullable restore
-#line 43 "/Users/yassa/TikTechCRM/Pages/EditInventory.razor"
+#line 44 "/Users/yassa/TikTechCRM/Pages/EditInventory.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 44 "/Users/yassa/TikTechCRM/Pages/EditInventory.razor"
+#line 45 "/Users/yassa/TikTechCRM/Pages/EditInventory.razor"
 using System.Text;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 45 "/Users/yassa/TikTechCRM/Pages/EditInventory.razor"
+#line 46 "/Users/yassa/TikTechCRM/Pages/EditInventory.razor"
 using System.Net.Http.Json;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 46 "/Users/yassa/TikTechCRM/Pages/EditInventory.razor"
+#line 47 "/Users/yassa/TikTechCRM/Pages/EditInventory.razor"
 using System.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 47 "/Users/yassa/TikTechCRM/Pages/EditInventory.razor"
+#line 48 "/Users/yassa/TikTechCRM/Pages/EditInventory.razor"
 using Newtonsoft.Json.Linq;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 48 "/Users/yassa/TikTechCRM/Pages/EditInventory.razor"
+#line 49 "/Users/yassa/TikTechCRM/Pages/EditInventory.razor"
 using Newtonsoft.Json;
 
 #line default
@@ -147,7 +147,7 @@ using Newtonsoft.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 52 "/Users/yassa/TikTechCRM/Pages/EditInventory.razor"
+#line 53 "/Users/yassa/TikTechCRM/Pages/EditInventory.razor"
     private dynamic validate;
     public EditInventoryModel EditInventoryModel = new();
     

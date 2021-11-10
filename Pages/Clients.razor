@@ -6,7 +6,7 @@
         <p><em>Loading...</em></p>
     }
     <br>
-    <button  class="btn btn-info">Add Client</button> 
+    <button  class="btn btn-info"  @onclick="() => Redirect()">Add Client</button> 
     <br>
     <table class="table">
         <thead>
@@ -30,7 +30,7 @@
                         <td>@Current_Client.Email</td>
                         <td>@Current_Client.Phone_Number</td>
                         <button class="btn btn-primary"> Edit</button>
-                        <button type="button" class="btn btn-danger"> Delete</button>
+                        <button type="button" class="btn btn-danger" @onclick="() => DeleteClient(Current_Client.Id)"> Delete</button>
 
                         
                     </tr>
@@ -81,7 +81,16 @@
        
         StateHasChanged();
     }
- 
+        private void Redirect()
+    {
+        NavManager.NavigateTo("/newclient",true); 
+    }
+    private async void DeleteClient(int id){
+        using var client = new HttpClient();
+        var result = await client.GetStringAsync("http://0.0.0.0:800/Clients/del_Client/"+id.ToString());
+        NavManager.NavigateTo("/Clients",true); 
+
+    }
 
 
 }
