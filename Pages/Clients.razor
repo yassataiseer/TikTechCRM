@@ -6,7 +6,7 @@
         <p><em>Loading...</em></p>
     }
     <br>
-    <button  class="btn btn-info"  @onclick="() => Redirect()"><i class="oi oi-plus"></i> Client</button> 
+    <button  class="btn btn-info"  @onclick="() => Redirect()"><Tooltip Text="New Client"><i class="oi oi-plus"></i></Tooltip> Client</button> 
     <br>
     <table class="table">
         <thead>
@@ -29,8 +29,8 @@
                         <td>@Current_Client.Postal_code</td>
                         <td>@Current_Client.Email</td>
                         <td>@Current_Client.Phone_Number</td>
-                        <button class="btn btn-primary" @onclick="() => EditRedirect(Current_Client.Username,Current_Client.Address,Current_Client.Postal_code,Current_Client.Email,Current_Client.Phone_Number,Current_Client.Id)"> <i class="oi oi-pencil"></i> </button>
-                        <button type="button" class="btn btn-danger" @onclick="() => DeleteClient(Current_Client.Id)"><i class="oi oi-trash"></i></button>
+                        <button class="btn btn-primary" @onclick="() => EditRedirect(Current_Client.Username,Current_Client.Address,Current_Client.Postal_code,Current_Client.Email,Current_Client.Phone_Number,Current_Client.Id)"> <Tooltip Text="Edit Row"><i class="oi oi-pencil"></i></Tooltip></button>
+                        <button type="button" class="btn btn-danger" @onclick="() => DeleteClient(Current_Client.Id)"><Tooltip Text="Delete"><i class="oi oi-trash"></i></Tooltip></button>
 
                         
                     </tr>

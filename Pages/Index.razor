@@ -3,7 +3,8 @@
 
 <html>
 <h1>Users</h1>
-Welcome to your new <Tooltip Text="Blazor is awesome!">app</Tooltip>.
+<br>
+<button  class="btn btn-info" @onclick="() => NewUser()"><Tooltip Text="Add A User"><i class="oi oi-plus"></i> </Tooltip> User</button> 
 
 @if(isAdmin){
     @if (UserData == null)
@@ -31,8 +32,8 @@ Welcome to your new <Tooltip Text="Blazor is awesome!">app</Tooltip>.
                         <td>@users.Username</td>
                         <td>@users.Password </td>
 
-                        <button class="btn btn-primary" @onclick="() => EditRedirect(users.Username,users.Password)" > <i class="oi oi-pencil"></i></button>
-                        <button type="button" class="btn btn-danger" @onclick="() => DeleteUser(users.Username,users.Password)"  ><i class="oi oi-trash"></i></button>
+                        <button class="btn btn-primary" @onclick="() => EditRedirect(users.Username,users.Password)" > <Tooltip Text="Edit Row"><i class="oi oi-pencil"></i> </Tooltip></button>
+                        <button type="button" class="btn btn-danger" @onclick="() => DeleteUser(users.Username,users.Password)"  ><Tooltip Text="Delete Row"><i class="oi oi-trash"></i> </Tooltip></button>
                         
                     </tr>
                     }

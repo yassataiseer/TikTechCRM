@@ -3,7 +3,7 @@
 <html>
 <h1>Services</h1>
     <br>
-    <button  class="btn btn-info" @onclick="() => NewService()" ><i class="oi oi-plus"></i> Service</button> 
+    <button  class="btn btn-info" @onclick="() => NewService()" ><Tooltip Text="New Service"><i class="oi oi-plus"></i></Tooltip> Service</button> 
     <br>
     <table class="table">
         <thead>
@@ -21,8 +21,8 @@
                     <td>@Services.Service_name</td>
                     <td>@Services.Service_purpose</td>
                     <td>$@Services.Service_cost</td>
-                    <button class="btn btn-primary" @onclick="() => EditRedirect(Services.Service_name,Services.Service_purpose,Services.Service_cost)" ><i class="oi oi-pencil"></i></button>
-                    <button type="button" class="btn btn-danger" @onclick="() => DeleteService(Services.Service_name)"><i class="oi oi-trash"></i></button>
+                    <button class="btn btn-primary" @onclick="() => EditRedirect(Services.Service_name,Services.Service_purpose,Services.Service_cost)" ><Tooltip Text="Edit Row"><i class="oi oi-pencil"></i></Tooltip></button>
+                    <button type="button" class="btn btn-danger" @onclick="() => DeleteService(Services.Service_name)"><Tooltip Text="Delete"><i class="oi oi-trash"></i></Tooltip></button>
                      
                 </tr>
                 }
