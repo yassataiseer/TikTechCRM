@@ -7,7 +7,17 @@
 
 @if (forecasts == null)
 {
-    <p><em>Loading...</em></p>
+ <div id="app" style="margin: 0 auto; width: 100vw; height: 100vh">
+        <div class="text-center pt-3" style="color: rgb(5, 39, 103); font-size: 16pt">
+          Loading...
+        </div>
+        <div class="text-center mt-3">
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
+                style="font-size: 16pt; width: 36px; height: 36px; color: rgb(5, 39, 103)" />
+        </div>
+        <div class="text-center">
+</div>
+</div>
 }
 else
 {

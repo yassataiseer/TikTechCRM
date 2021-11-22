@@ -118,7 +118,7 @@ using Microsoft.AspNetCore.Authorization;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 49 "/Users/yassa/TikTechCRM/Shared/NavMenu.razor"
+#line 52 "/Users/yassa/TikTechCRM/Shared/NavMenu.razor"
        
     private bool collapseNavMenu = true;
 

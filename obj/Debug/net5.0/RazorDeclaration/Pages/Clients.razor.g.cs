@@ -90,42 +90,42 @@ using Microsoft.AspNetCore.Authorization;
 #line hidden
 #nullable disable
 #nullable restore
-#line 46 "/Users/yassa/TikTechCRM/Pages/Clients.razor"
+#line 56 "/Users/yassa/TikTechCRM/Pages/Clients.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 47 "/Users/yassa/TikTechCRM/Pages/Clients.razor"
+#line 57 "/Users/yassa/TikTechCRM/Pages/Clients.razor"
 using System.Text;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 48 "/Users/yassa/TikTechCRM/Pages/Clients.razor"
+#line 58 "/Users/yassa/TikTechCRM/Pages/Clients.razor"
 using System.Net.Http.Json;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 49 "/Users/yassa/TikTechCRM/Pages/Clients.razor"
+#line 59 "/Users/yassa/TikTechCRM/Pages/Clients.razor"
 using System.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 50 "/Users/yassa/TikTechCRM/Pages/Clients.razor"
+#line 60 "/Users/yassa/TikTechCRM/Pages/Clients.razor"
 using Newtonsoft.Json.Linq;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 51 "/Users/yassa/TikTechCRM/Pages/Clients.razor"
+#line 61 "/Users/yassa/TikTechCRM/Pages/Clients.razor"
 using Newtonsoft.Json;
 
 #line default
@@ -147,7 +147,7 @@ using Newtonsoft.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 55 "/Users/yassa/TikTechCRM/Pages/Clients.razor"
+#line 65 "/Users/yassa/TikTechCRM/Pages/Clients.razor"
       
     private dynamic validate;
     private List<ClientModel> ClientData = new();

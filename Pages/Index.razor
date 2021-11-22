@@ -9,8 +9,17 @@
 @if(isAdmin){
     @if (UserData == null)
     {
-        <p><em>Loading...</em></p>
-
+ <div id="app" style="margin: 0 auto; width: 100vw; height: 100vh">
+        <div class="text-center pt-3" style="color: rgb(5, 39, 103); font-size: 16pt">
+          Loading...
+        </div>
+        <div class="text-center mt-3">
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
+                style="font-size: 16pt; width: 36px; height: 36px; color: rgb(5, 39, 103)" />
+        </div>
+        <div class="text-center">
+</div>
+</div>
     }else{
         <h6>*Note: Admin Value remains as is!</h6>
         <table class="table">
@@ -23,7 +32,6 @@
 
             <tbody>
 
-                
 
                 @foreach (var users in UserData)
                 {
@@ -34,8 +42,8 @@
 
                         <button class="btn btn-primary" @onclick="() => EditRedirect(users.Username,users.Password)" > <Tooltip Text="Edit Row"><i class="oi oi-pencil"></i> </Tooltip></button>
                         <button type="button" class="btn btn-danger" @onclick="() => DeleteUser(users.Username,users.Password)"  ><Tooltip Text="Delete Row"><i class="oi oi-trash"></i> </Tooltip></button>
-                        
                     </tr>
+                    <br>
                     }
                 }
             </tbody>

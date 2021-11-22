@@ -90,42 +90,42 @@ using Microsoft.AspNetCore.Authorization;
 #line hidden
 #nullable disable
 #nullable restore
-#line 57 "/Users/yassa/TikTechCRM/Pages/FetchData.razor"
+#line 67 "/Users/yassa/TikTechCRM/Pages/FetchData.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 58 "/Users/yassa/TikTechCRM/Pages/FetchData.razor"
+#line 68 "/Users/yassa/TikTechCRM/Pages/FetchData.razor"
 using System.Text;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 59 "/Users/yassa/TikTechCRM/Pages/FetchData.razor"
+#line 69 "/Users/yassa/TikTechCRM/Pages/FetchData.razor"
 using System.Net.Http.Json;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 60 "/Users/yassa/TikTechCRM/Pages/FetchData.razor"
+#line 70 "/Users/yassa/TikTechCRM/Pages/FetchData.razor"
 using System.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 61 "/Users/yassa/TikTechCRM/Pages/FetchData.razor"
+#line 71 "/Users/yassa/TikTechCRM/Pages/FetchData.razor"
 using Newtonsoft.Json.Linq;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 62 "/Users/yassa/TikTechCRM/Pages/FetchData.razor"
+#line 72 "/Users/yassa/TikTechCRM/Pages/FetchData.razor"
 using Newtonsoft.Json;
 
 #line default
@@ -147,7 +147,7 @@ using Newtonsoft.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 66 "/Users/yassa/TikTechCRM/Pages/FetchData.razor"
+#line 76 "/Users/yassa/TikTechCRM/Pages/FetchData.razor"
 
     private WeatherForecast[] forecasts;
     private List<orderData> UserData = new();
