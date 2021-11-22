@@ -33,24 +33,24 @@
         <tbody>
                 @foreach (var Current_Inventory in InventoryData)
                 {
+                string Color = "#ff9e9e";
+
                     <tr>
+
                          @if(Current_Inventory.Quantity>0){
-                        <td bgcolor="#adffc3">@Current_Inventory.Item</td>
-                        <td bgcolor="#adffc3">@Current_Inventory.Barcode</td>
-                        <td bgcolor="#adffc3">@Current_Inventory.Price</td>
-                        <td bgcolor="#adffc3">@Current_Inventory.Quantity</td>
-                        <td bgcolor="#adffc3">@Current_Inventory.Status</td>
+                             Color = "#adffc3";
+                         }
+
+
+                        <td bgcolor=@Color>@Current_Inventory.Item</td>
+                        <td bgcolor=@Color>@Current_Inventory.Barcode</td>
+                        <td bgcolor=@Color>@Current_Inventory.Price</td>
+                        <td bgcolor=@Color>@Current_Inventory.Quantity</td>
+                        <td bgcolor=@Color>@Current_Inventory.Status</td>
 
                         <br>
-                         }
-                         else{
-                        <td bgcolor="#ff9e9e">@Current_Inventory.Item</td>
-                        <td bgcolor="#ff9e9e">@Current_Inventory.Barcode</td>
-                        <td bgcolor="#ff9e9e">@Current_Inventory.Price</td>
-                        <td bgcolor="#ff9e9e">@Current_Inventory.Quantity</td>
-                        <td bgcolor="#ff9e9e">@Current_Inventory.Status</td>
-                        <br>
-                         }
+                         
+
                         <button class="btn btn-primary" @onclick="() => EditRedirect(Current_Inventory.Item,Current_Inventory.Barcode,Current_Inventory.Price,Current_Inventory.Quantity,Current_Inventory.Status)"><Tooltip Text="Edit Row"> <i class="oi oi-pencil"></i></Tooltip></button>
                         <button type="button" class="btn btn-danger" @onclick="() => DeleteInventory(Current_Inventory.Item)"> <Tooltip Text="Delete"><i class="oi oi-trash"></i></Tooltip></button>
                     </tr>

@@ -90,42 +90,42 @@ using Microsoft.AspNetCore.Authorization;
 #line hidden
 #nullable disable
 #nullable restore
-#line 67 "/Users/yassa/TikTechCRM/Pages/FetchData.razor"
+#line 67 "/Users/yassa/TikTechCRM/Pages/Orders.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 68 "/Users/yassa/TikTechCRM/Pages/FetchData.razor"
+#line 68 "/Users/yassa/TikTechCRM/Pages/Orders.razor"
 using System.Text;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 69 "/Users/yassa/TikTechCRM/Pages/FetchData.razor"
+#line 69 "/Users/yassa/TikTechCRM/Pages/Orders.razor"
 using System.Net.Http.Json;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 70 "/Users/yassa/TikTechCRM/Pages/FetchData.razor"
+#line 70 "/Users/yassa/TikTechCRM/Pages/Orders.razor"
 using System.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 71 "/Users/yassa/TikTechCRM/Pages/FetchData.razor"
+#line 71 "/Users/yassa/TikTechCRM/Pages/Orders.razor"
 using Newtonsoft.Json.Linq;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 72 "/Users/yassa/TikTechCRM/Pages/FetchData.razor"
+#line 72 "/Users/yassa/TikTechCRM/Pages/Orders.razor"
 using Newtonsoft.Json;
 
 #line default
@@ -138,8 +138,8 @@ using Newtonsoft.Json;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/fetchdata")]
-    public partial class FetchData : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/orders")]
+    public partial class Orders : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -147,54 +147,44 @@ using Newtonsoft.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 76 "/Users/yassa/TikTechCRM/Pages/FetchData.razor"
-
-    private WeatherForecast[] forecasts;
-    private List<orderData> UserData = new();
-
-    protected override async Task OnInitializedAsync()
-    {
-        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
-                using var client = new HttpClient();
+#line 77 "/Users/yassa/TikTechCRM/Pages/Orders.razor"
+      
+    private dynamic validate;
+    private List<OrderModel> OrderData = new();
 
 
-            var result = await client.GetStringAsync("https://ticktechapi.pythonanywhere.com/");
+    protected override async Task OnInitializedAsync(){
+        validate =  await JsRuntime.InvokeAsync<string>("BlazorGetLocalStorage","Username:");
+       string value = (string)validate;
+       if(value==null){
+            NavManager.NavigateTo("/",true); 
+       }
+        using var client = new HttpClient();
+        var result = await client.GetStringAsync("http://0.0.0.0:800/Orders/all_Order");
 
-            JArray data = JArray.Parse(result);
-            foreach (dynamic obj in data){
-                    UserData.Add(new orderData(){
-                    Address = obj.Address,
-                    Description  = obj.Description, 
-                    Item = obj.Item, 
-                    Latitude = obj.Latitude, 
-                    Longitude = obj.Longitude, 
-                    Name = obj.Name, 
-                    Price = obj.Price
-                });
-            }
-            StateHasChanged();
-    
+        JArray data = JArray.Parse(result);
+        foreach (dynamic obj in data){
+                OrderData.Add(new OrderModel(){
+                    Accessory = obj.Accessory,
+                    Add_date  = obj.Add_date,
+                    Brand = obj.Brand,
+                    Client = obj.Client,
+                    Comments = obj.Comments,
+                    Deleted = obj.Deleted,
+                    Employee = obj.Employee,
+                    Order_no = obj.Order_no,
+                    Price = obj.Price,
+                    Product = obj.Product,
+                    Service = obj.Service,
+                    Status = obj.Status,
+                    Up_data = obj.Up_data,
+            });
+        }
+        StateHasChanged();
     }
-
-    public class WeatherForecast
-    {
-        public DateTime Date { get; set; }
-
-        public int TemperatureC { get; set; }
-
-        public string Summary { get; set; }
-
-        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    public void NewOrder(){
+        NavManager.NavigateTo("/neworder",true); 
     }
-    public class orderData{
-        public string Address { get; set; }
-        public string Description { get; set; }
-        public string Item { get; set; }
-        public double Latitude { get; set; }
-        public double Longitude { get; set; }
-        public string Name { get; set; }
-        public double Price { get; set; }
-}
 
 #line default
 #line hidden
