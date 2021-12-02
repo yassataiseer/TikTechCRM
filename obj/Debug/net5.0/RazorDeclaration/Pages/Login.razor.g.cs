@@ -148,17 +148,15 @@ using Newtonsoft.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 210 "/Users/yassa/TikTechCRM/Pages/Login.razor"
-
+#line 211 "/Users/yassa/TikTechCRM/Pages/Login.razor"
     private LoginModel LoginModel = new();
-
+    public Validate Validate;
     private async void  HandleValidSubmit()
     {
         using var client = new HttpClient();
-        var result = await client.GetStringAsync("https://ticktechapi.pythonanywhere.com/Users/validate_user/"+LoginModel.UserName+"/"+LoginModel.Password);
-        dynamic data = JObject.Parse(result);
-        Console.WriteLine(data.Status);
-        if (data.Status=="true"){
+        Validate = await Http.GetFromJsonAsync<Validate>("https://ticktechapi.pythonanywhere.com/Users/validate_user/"+LoginModel.UserName+"/"+LoginModel.Password);
+        Console.WriteLine(Validate.Status);
+        if (Validate.Status){
             await JsRuntime.InvokeVoidAsync("BlazorSetLocalStorage", "Username:", LoginModel.UserName);
             //await JsRuntime.InvokeAsync<bool>("WriteCookie",  "Username", LoginModel.Password, 1);
             //await localStorage.SetItemAsync("Username", "LoginModel.UserName");
@@ -182,6 +180,7 @@ using Newtonsoft.Json;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient Http { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime JsRuntime { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager UriHelper { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavManager { get; set; }
