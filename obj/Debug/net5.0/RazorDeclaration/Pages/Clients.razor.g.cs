@@ -159,7 +159,7 @@ using Newtonsoft.Json;
             NavManager.NavigateTo("/",true); 
        }
         using var client = new HttpClient();
-        var result = await client.GetStringAsync("http://0.0.0.0:800/Clients/all_Clients");
+        var result = await client.GetStringAsync("https://ticktechapi.pythonanywhere.com/Clients/all_Clients");
 
         JArray data = JArray.Parse(result);
         foreach (dynamic obj in data){
@@ -183,7 +183,7 @@ using Newtonsoft.Json;
     }
     private async void DeleteClient(int id){
         using var client = new HttpClient();
-        var result = await client.GetStringAsync("http://0.0.0.0:800/Clients/del_Client/"+id.ToString());
+        var result = await client.GetStringAsync("https://ticktechapi.pythonanywhere.com/Clients/del_Client/"+id.ToString());
         NavManager.NavigateTo("/Clients",true); 
 
     }

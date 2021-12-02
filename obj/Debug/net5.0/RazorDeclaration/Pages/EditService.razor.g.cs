@@ -160,7 +160,7 @@ using Newtonsoft.Json;
 
     public async void HandleValidSubmit(){
         using var client = new HttpClient();
-        var result = await client.GetStringAsync("http://0.0.0.0:800/Services/update_Services/"+Service_name+"/"+EditServiceModel.Service_purpose+"/"+EditServiceModel.Service_cost.ToString("0.0"));
+        var result = await client.GetStringAsync("https://ticktechapi.pythonanywhere.com/Services/update_Services/"+Service_name+"/"+EditServiceModel.Service_purpose+"/"+EditServiceModel.Service_cost.ToString("0.0"));
         dynamic data = JObject.Parse(result);
         Console.WriteLine(data.Status);
         if (data.Status=="true"){         

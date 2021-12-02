@@ -1,0 +1,194 @@
+@page "/editorder/{Order_no}/{Client}/{Employee}/{Product}/{Brand}/{Accessory}/{Amount}/{Status}/{Service}/{Comments}"
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <h1>New Order:</h1>
+    <h6><b>DO NOT USE THE FOLLOWING CHARACTERS: / \ </b></h6>
+</head>
+<div class="card">
+<div class="container">
+<EditForm Model="@OrderForm" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <h4>Client Name:</h4>
+    <InputSelect @bind-Value="OrderForm.Client" >
+      <option value=""></option>
+      @foreach (var CurrentClient in ClientData)
+      {
+          if(!@CurrentClient.Deleted){
+            <option value=@CurrentClient.Username>@CurrentClient.Username</option>
+          }
+
+      }
+   </InputSelect>    
+    <br>
+    <h4>Product:</h4>
+    <InputText type="text" id="Product" @bind-Value="OrderForm.Product" />
+    <br>
+    <h4>Comments:</h4>
+    <InputTextArea type="text" id="Comments" @bind-Value="OrderForm.Comments" />
+    <br>
+    <h4>Brand:</h4>
+    <InputText type="text" id="Brand" @bind-Value="OrderForm.Brand" />
+    <br>
+    <h4>Employee: </h4>
+    <InputSelect @bind-Value="OrderForm.Employee">
+      <option value=""></option>
+      @foreach (var CurrentUser in UserData)
+      {
+            <option value=@CurrentUser.Username>@CurrentUser.Username</option>
+      }
+   </InputSelect>
+    <br>
+    <h4>Price:</h4>
+    <InputNumber  type=float id="price" @bind-Value="OrderForm.Price"/>
+    <br>
+    <h4>Service:</h4>
+    <InputSelect @bind-Value="OrderForm.Service">
+      <option value="0">@OrderForm.Service</option>
+      @foreach (var CurrentService in ServiceData)
+      {
+            <option value=@CurrentService.Service_name>@CurrentService.Service_name</option>
+      }
+   </InputSelect>    
+    <br>
+    <h4>Accessories:</h4>
+    <InputText type="text" id="Accessories" @bind-Value="OrderForm.Accessory"/>
+    <br>
+    <h4>Status:</h4>
+    <InputSelect @bind-Value="OrderForm.Status">
+        <option value=""></option>
+        <option value="Completed">Completed</option>
+        <option value="To-Do">To-Do</option>
+        <option value="In-Progress">In-Progress</option>
+   </InputSelect>    
+    <br>
+    <h4>Date:</h4>
+    <InputDate type="date" id="date" @bind-Value="OrderForm.Add_date"/>
+    <br>
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button> 
+    <ValidationSummary />
+</EditForm>
+</div>
+</div>
+</html>
+
+
+@code{
+    @using System.Net.Http
+    @using System.Text 
+    @using System.Net.Http.Json
+    @using System.Web
+    @using Newtonsoft.Json.Linq
+    @using Newtonsoft.Json
+    @inject NavigationManager NavManager
+    @inject NavigationManager UriHelper
+    @using System
+    @inject IJSRuntime JsRuntime;
+    private dynamic validate;
+    public OrderForm OrderForm = new();
+    public List<ClientModel> ClientData = new();
+    public List<UsersModel> UserData = new();
+    private List<ServiceModel> ServiceData = new();
+
+    [Parameter]
+    public string Order_no { get; set; }
+
+    [Parameter]
+    public string Accessory { get; set; }
+
+    [Parameter]
+    public string Brand { get; set; }
+    [Parameter]
+    public string Client { get; set; }
+    [Parameter]
+    public string Comments { get; set; }
+    [Parameter]
+    public string Employee { get; set; }
+    [Parameter]
+    public string Amount { get; set; }
+    [Parameter]
+    public string Product { get; set; }
+    [Parameter]
+    public string Service { get; set; }
+    [Parameter]
+    public string Status { get; set; }
+        
+    private async void  HandleValidSubmit()
+    {
+        using var client = new HttpClient();
+        string date = OrderForm.Add_date.ToString();
+        date = date.Replace('/', '-');
+        Console.WriteLine(date);
+        var result = await client.GetStringAsync("https://ticktechapi.pythonanywhere.com/Orders/update_Order/"+Order_no+"/"+OrderForm.Client+"/"+OrderForm.Employee+"/"+OrderForm.Product+"/"+OrderForm.Brand+"/"+OrderForm.Accessory+"/"+OrderForm.Price.ToString("0.00")+"/"+OrderForm.Status+"/"+OrderForm.Service+"/"+OrderForm.Comments+"/"+date);
+        // /update_Order/<int:Order_no>/<string:Client>/<string:Employee>/<string:Product>/<string:Brand>/<string:Accessory>/<float:Amount>/<string:Status>/<string:Service>/<string:Comments>/<string:Up_date>")
+        dynamic data = JObject.Parse(result);
+        Console.WriteLine(data.Status);
+        if (data.Status=="true"){
+            NavManager.NavigateTo("/orders",true); 
+        } 
+        else {
+            await JsRuntime.InvokeVoidAsync("alert", "Error!");
+        }        
+    }
+
+    protected override async Task OnInitializedAsync(){
+        validate =  await JsRuntime.InvokeAsync<string>("BlazorGetLocalStorage","Username:");
+        string value = (string)validate;
+        OrderForm.Accessory = Accessory;
+        OrderForm.Employee = Employee;
+        OrderForm.Product = Product;
+        OrderForm.Price = Convert.ToDouble(Amount);
+        OrderForm.Comments = Comments;
+        OrderForm.Brand = Brand;
+        OrderForm.Service = Service;
+        OrderForm.Client = Client;
+        OrderForm.Status = Status;
+
+
+
+        using var client = new HttpClient();
+        var result = await client.GetStringAsync("https://ticktechapi.pythonanywhere.com/Clients/all_Clients");
+
+        JArray data = JArray.Parse(result);
+        foreach (dynamic obj in data){
+                ClientData.Add(new ClientModel(){
+                    Address = obj.Address,
+                    Deleted  = obj.Deleted,
+                    Email = obj.Email,
+                    Id = obj.Id,
+                    Phone_Number = obj.Phone_Number,
+                    Postal_code = obj.Postal_code,
+                    Username = obj.Username
+            });
+            }
+        result = await client.GetStringAsync("https://ticktechapi.pythonanywhere.com/Users/grab_users");
+
+        data = JArray.Parse(result);
+        foreach (dynamic obj in data){
+                UserData.Add(new UsersModel(){
+                    Password = obj.Password,
+                    Username  = obj.Username
+            });
+            }
+
+        result = await client.GetStringAsync("http://0.0.0.0:800/Services/all_Services");
+
+        data = JArray.Parse(result);
+        foreach (dynamic obj in data){
+                ServiceData.Add(new ServiceModel(){
+                    Service_cost = obj.Service_cost,
+                    Service_name  = obj.Service_name,
+                    Service_purpose = obj.Service_purpose
+            });
+        }
+
+       if(value==null){
+            NavManager.NavigateTo("/",true); 
+       }
+       OrderForm.Add_date = DateTime.Now;        
+    
+}
+}

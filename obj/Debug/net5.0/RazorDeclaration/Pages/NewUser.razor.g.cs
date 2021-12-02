@@ -154,7 +154,7 @@ using Newtonsoft.Json;
     private async void  HandleValidSubmit()
     {
         using var client = new HttpClient();
-        var result = await client.GetStringAsync("http://0.0.0.0:800/Users/mk_user/"+LoginModel.UserName+"/"+LoginModel.Password);
+        var result = await client.GetStringAsync("https://ticktechapi.pythonanywhere.com/Users/mk_user/"+LoginModel.UserName+"/"+LoginModel.Password);
         dynamic data = JObject.Parse(result);
         Console.WriteLine(data.Status);
         if (data.Status=="true"){

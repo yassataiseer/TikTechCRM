@@ -160,7 +160,7 @@ using Newtonsoft.Json;
             NavManager.NavigateTo("/",true); 
        }
         using var client = new HttpClient();
-        var result = await client.GetStringAsync("http://0.0.0.0:800/Inventory/grab_Inventory");
+        var result = await client.GetStringAsync("https://ticktechapi.pythonanywhere.com/Inventory/grab_Inventory");
 
         JArray data = JArray.Parse(result);
         foreach (dynamic obj in data){
@@ -176,7 +176,7 @@ using Newtonsoft.Json;
     }
     private async void DeleteInventory(string Item){
         using var client = new HttpClient();
-        var result = await client.GetStringAsync("http://0.0.0.0:800/Inventory/del_Inventory/"+Item);
+        var result = await client.GetStringAsync("https://ticktechapi.pythonanywhere.com/Inventory/del_Inventory/"+Item);
         NavManager.NavigateTo("/inventory",true); 
     }
     void Redirect(){

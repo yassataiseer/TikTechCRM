@@ -164,7 +164,7 @@ using Newtonsoft.Json;
        }
         if(value=="Admin"){
             using var client = new HttpClient();
-            var result = await client.GetStringAsync("http://0.0.0.0:800/Users/grab_users");
+            var result = await client.GetStringAsync("https://ticktechapi.pythonanywhere.com/Users/grab_users");
 
             JArray data = JArray.Parse(result);
             foreach (dynamic obj in data){
@@ -188,7 +188,7 @@ using Newtonsoft.Json;
 
     private async void DeleteUser(string Username,string Password){
         using var client = new HttpClient();
-        var result = await client.GetStringAsync("http://0.0.0.0:800/Users/delete_user/"+Username+"/"+Password);
+        var result = await client.GetStringAsync("https://ticktechapi.pythonanywhere.com/Users/delete_user/"+Username+"/"+Password);
         NavManager.NavigateTo("/Users",true); 
     }
     private void NewUser()

@@ -158,7 +158,7 @@ using Newtonsoft.Json;
             NavManager.NavigateTo("/",true); 
        }
             using var client = new HttpClient();
-            var result = await client.GetStringAsync("http://0.0.0.0:800/Services/all_Services");
+            var result = await client.GetStringAsync("https://ticktechapi.pythonanywhere.com/Services/all_Services");
 
             JArray data = JArray.Parse(result);
             foreach (dynamic obj in data){
@@ -177,7 +177,7 @@ using Newtonsoft.Json;
     }
     private async void DeleteService(string Service_name){
         using var client = new HttpClient();
-        var result = await client.GetStringAsync("http://0.0.0.0:800/Services/del_Services/"+Service_name);
+        var result = await client.GetStringAsync("https://ticktechapi.pythonanywhere.com/Services/del_Services/"+Service_name);
         NavManager.NavigateTo("/Services",true); 
     }
     private void EditRedirect(string Service_name, string Service_purpose, double Service_cost){

@@ -117,26 +117,22 @@ using Microsoft.AspNetCore.Authorization;
             __builder.AddAttribute(2, "b-6lj92781bv");
             __builder.OpenElement(3, "span");
             __builder.AddAttribute(4, "b-6lj92781bv");
-            __builder.AddContent(5, 
 #nullable restore
 #line 2 "/Users/yassa/TikTechCRM/Shared/Tooltip.razor"
-           Text
+__builder.AddContent(5, Text);
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.CloseElement();
             __builder.AddMarkupContent(6, "\n    ");
-            __builder.AddContent(7, 
 #nullable restore
 #line 3 "/Users/yassa/TikTechCRM/Shared/Tooltip.razor"
-     ChildContent
+__builder.AddContent(7, ChildContent);
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.CloseElement();
         }
         #pragma warning restore 1998

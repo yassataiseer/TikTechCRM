@@ -113,15 +113,13 @@ using Microsoft.AspNetCore.Authorization;
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
             __builder.AddMarkupContent(0, "<link href=\"/css/login.css\" rel=\"stylesheet\" type=\"text/css\">\n");
-            __builder.AddContent(1, 
 #nullable restore
 #line 3 "/Users/yassa/TikTechCRM/Pages/EmptyLayout.razor"
- Body
+__builder.AddContent(1, Body);
 
 #line default
 #line hidden
 #nullable disable
-            );
         }
         #pragma warning restore 1998
     }

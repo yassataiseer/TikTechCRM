@@ -166,7 +166,7 @@ using Newtonsoft.Json;
     private async void  HandleValidSubmit()
     {
         using var client = new HttpClient();
-        var result = await client.GetStringAsync("http://0.0.0.0:800/Inventory/update_Inventory/"+Item+"/"+EditInventoryModel.Barcode+"/"+EditInventoryModel.Price.ToString("0.00")+"/"+EditInventoryModel.Quantity+"/"+EditInventoryModel.Status);
+        var result = await client.GetStringAsync("https://ticktechapi.pythonanywhere.com/Inventory/update_Inventory/"+Item+"/"+EditInventoryModel.Barcode+"/"+EditInventoryModel.Price.ToString("0.00")+"/"+EditInventoryModel.Quantity+"/"+EditInventoryModel.Status);
         dynamic data = JObject.Parse(result);
         Console.WriteLine(data.Status);
         if (data.Status=="true"){

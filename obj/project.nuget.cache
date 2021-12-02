@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Ms4NRtaJi3eMR5nNHoDdOjy9jShDiRqIrON5ovxtTknp3mkZjm5+7/afbA2BftFCW3BiOiHI0ymoyHqx7J+fYQ==",
+  "dgSpecHash": "zBqf9JGPxAcWE1SPtku3eLrsMlqCGqfQgVqrTJy+bWPX68CK64DfDsB8V1QYeGrmi4BEVR1xnUx+fXo3FmNnPA==",
   "success": true,
   "projectFilePath": "/Users/yassa/TikTechCRM/TikTechCRM.csproj",
   "expectedPackageFiles": [
@@ -31,10 +31,16 @@
     "/Users/yassa/.nuget/packages/microsoft.extensions.primitives/5.0.0/microsoft.extensions.primitives.5.0.0.nupkg.sha512",
     "/Users/yassa/.nuget/packages/microsoft.jsinterop/5.0.5/microsoft.jsinterop.5.0.5.nupkg.sha512",
     "/Users/yassa/.nuget/packages/microsoft.jsinterop.webassembly/5.0.5/microsoft.jsinterop.webassembly.5.0.5.nupkg.sha512",
+    "/Users/yassa/.nuget/packages/microsoft.netcore.platforms/2.0.0/microsoft.netcore.platforms.2.0.0.nupkg.sha512",
+    "/Users/yassa/.nuget/packages/netstandard.library/2.0.0/netstandard.library.2.0.0.nupkg.sha512",
     "/Users/yassa/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512",
+    "/Users/yassa/.nuget/packages/syncfusion.compression.net.core/19.3.0.56/syncfusion.compression.net.core.19.3.0.56.nupkg.sha512",
+    "/Users/yassa/.nuget/packages/syncfusion.licensing/19.3.0.56/syncfusion.licensing.19.3.0.56.nupkg.sha512",
+    "/Users/yassa/.nuget/packages/syncfusion.pdf.net.core/19.3.0.56/syncfusion.pdf.net.core.19.3.0.56.nupkg.sha512",
     "/Users/yassa/.nuget/packages/system.io.pipelines/5.0.1/system.io.pipelines.5.0.1.nupkg.sha512",
     "/Users/yassa/.nuget/packages/system.net.http.json/5.0.0/system.net.http.json.5.0.0.nupkg.sha512",
-    "/Users/yassa/.nuget/packages/microsoft.netcore.app.runtime.browser-wasm/5.0.5/microsoft.netcore.app.runtime.browser-wasm.5.0.5.nupkg.sha512"
+    "/Users/yassa/.nuget/packages/system.text.encoding.codepages/4.4.0/system.text.encoding.codepages.4.4.0.nupkg.sha512",
+    "/Users/yassa/.nuget/packages/microsoft.netcore.app.runtime.browser-wasm/5.0.12/microsoft.netcore.app.runtime.browser-wasm.5.0.12.nupkg.sha512"
   ],
   "logs": []
 }

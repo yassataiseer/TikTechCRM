@@ -90,43 +90,85 @@ using Microsoft.AspNetCore.Authorization;
 #line hidden
 #nullable disable
 #nullable restore
-#line 67 "/Users/yassa/TikTechCRM/Pages/Orders.razor"
+#line 70 "/Users/yassa/TikTechCRM/Pages/Orders.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 68 "/Users/yassa/TikTechCRM/Pages/Orders.razor"
+#line 71 "/Users/yassa/TikTechCRM/Pages/Orders.razor"
 using System.Text;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 69 "/Users/yassa/TikTechCRM/Pages/Orders.razor"
+#line 72 "/Users/yassa/TikTechCRM/Pages/Orders.razor"
 using System.Net.Http.Json;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 70 "/Users/yassa/TikTechCRM/Pages/Orders.razor"
+#line 73 "/Users/yassa/TikTechCRM/Pages/Orders.razor"
 using System.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 71 "/Users/yassa/TikTechCRM/Pages/Orders.razor"
+#line 74 "/Users/yassa/TikTechCRM/Pages/Orders.razor"
 using Newtonsoft.Json.Linq;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 72 "/Users/yassa/TikTechCRM/Pages/Orders.razor"
+#line 75 "/Users/yassa/TikTechCRM/Pages/Orders.razor"
 using Newtonsoft.Json;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 79 "/Users/yassa/TikTechCRM/Pages/Orders.razor"
+using Syncfusion.Pdf;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 80 "/Users/yassa/TikTechCRM/Pages/Orders.razor"
+using Syncfusion.Pdf.Grid;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 81 "/Users/yassa/TikTechCRM/Pages/Orders.razor"
+using Syncfusion.Drawing;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 82 "/Users/yassa/TikTechCRM/Pages/Orders.razor"
+using Syncfusion.Pdf.Graphics;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 84 "/Users/yassa/TikTechCRM/Pages/Orders.razor"
+using System.IO;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 85 "/Users/yassa/TikTechCRM/Pages/Orders.razor"
+using BlazorPdfExport.Data;
 
 #line default
 #line hidden
@@ -147,7 +189,7 @@ using Newtonsoft.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 77 "/Users/yassa/TikTechCRM/Pages/Orders.razor"
+#line 86 "/Users/yassa/TikTechCRM/Pages/Orders.razor"
       
     private dynamic validate;
     private List<OrderModel> OrderData = new();
@@ -160,7 +202,7 @@ using Newtonsoft.Json;
             NavManager.NavigateTo("/",true); 
        }
         using var client = new HttpClient();
-        var result = await client.GetStringAsync("http://0.0.0.0:800/Orders/all_Order");
+        var result = await client.GetStringAsync("https://ticktechapi.pythonanywhere.com/Orders/all_Order");
 
         JArray data = JArray.Parse(result);
         foreach (dynamic obj in data){
@@ -185,10 +227,160 @@ using Newtonsoft.Json;
     public void NewOrder(){
         NavManager.NavigateTo("/neworder",true); 
     }
+    public async void DeleteOrder(int Order_no){
+        using var client = new HttpClient();
+        var result = await client.GetStringAsync("https://ticktechapi.pythonanywhere.com/Orders/del_Order/"+Order_no.ToString());
+        NavManager.NavigateTo("/orders",true);       
+    }
+    private void EditRedirect(int Order_no,string Client,string Employee,string Product, string Brand, string Accessory, double Amount, string Status, string Service, string Comments){
+         NavManager.NavigateTo("/editorder/"+Order_no.ToString()+"/"+Client+"/"+Employee+"/"+Product+"/"+Brand+"/"+Accessory+"/"+Amount.ToString("0.00")+"/"+Status+"/"+Service+"/"+Comments,true); 
+    }
+    void ExportToPdf(OrderModel OrderData)
+    {
+        Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTQyMzUwQDMxMzkyZTMzMmUzMEFFR0lYRDl5OWo0Q3o0SEZsN2grQ2JvN2NTNzVwaytmYk1WeHVJcVVFZmM9");
+        int cellMargin = 8;
+        PdfDocument pdfDocument = new PdfDocument();
+        //Add Page to the PDF document.
+        PdfPage page = pdfDocument.Pages.Add();
+
+        //Create a new font.
+        PdfStandardFont font = new PdfStandardFont(PdfFontFamily.Courier, 16);
+        PdfStandardFont font2 = new PdfStandardFont(PdfFontFamily.Helvetica, 18);
+        PdfStandardFont font3 = new PdfStandardFont(PdfFontFamily.TimesRoman, 11);
+
+        //Create a text element to draw a text in PDF page.
+        //Title Area:
+        PdfTextElement title = new PdfTextElement("Tik Tech Electronics", font, PdfBrushes.Black);
+        PdfTextElement title2 = new PdfTextElement("541 Thompson Road", font, PdfBrushes.Black);
+        PdfTextElement title3 = new PdfTextElement("Milton, ON L9T7Z1", font, PdfBrushes.Black);
+        PdfTextElement title4 = new PdfTextElement("Sales Receipt", font2, PdfBrushes.Black);
+
+        PdfLayoutResult result = title.Draw(page, new PointF(0, 0));
+        PdfLayoutResult result2 = title2.Draw(page, new PointF(0, 17));
+        PdfLayoutResult result3 = title3.Draw(page, new PointF(0, 34));
+        PdfLayoutResult result4 = title4.Draw(page, new PointF(350, 0));
+
+
+
+
+        PdfStandardFont contentFont = new PdfStandardFont(PdfFontFamily.TimesRoman, 12);
+        PdfLayoutFormat format = new PdfLayoutFormat();
+        format.Layout = PdfLayoutType.Paginate;
+
+        //Table:
+        PdfGrid pdfGrid = new PdfGrid();
+        pdfGrid.Style.CellPadding.Left = cellMargin;
+        pdfGrid.Style.CellPadding.Right = cellMargin;
+        //Add values to list
+
+        List<object> headerdata = new List<object>();
+
+    
+        Object row2 = new{ Date = DateTime.Now, Name = OrderData.Client, Customer_No = OrderData.Order_no };
+
+
+        headerdata.Add(row2);
+
+        //Add list to IEnumerable
+
+        IEnumerable<object> dataTable = headerdata;
+
+        //Assign data source.
+        pdfGrid.ApplyBuiltinStyle(PdfGridBuiltinStyle.GridTable4Accent1);
+
+        pdfGrid.DataSource = dataTable;
+
+
+        //Draw grid to the page of PDF document.
+
+        pdfGrid.Draw(page, new Syncfusion.Drawing.PointF(300, 40)); 
+
+
+        PdfGrid pdfUpperBodyGrid = new PdfGrid();
+        pdfUpperBodyGrid.Style.CellPadding.Left = cellMargin;
+        pdfUpperBodyGrid.Style.CellPadding.Right = cellMargin;
+
+
+        List<object> UpperBodyData = new List<object>();
+        Object UpperBodyRow1 = new{Employee=OrderData.Employee};
+        UpperBodyData.Add(UpperBodyRow1);    
+
+        IEnumerable<object> UpperBodyTable = UpperBodyData;
+             
+        pdfUpperBodyGrid.ApplyBuiltinStyle(PdfGridBuiltinStyle.GridTable4Accent1);
+        pdfUpperBodyGrid.DataSource = UpperBodyData;
+        pdfUpperBodyGrid.Draw(page, new Syncfusion.Drawing.PointF(400, 120));  
+
+
+
+
+
+
+        PdfGrid pdfBodyGrid = new PdfGrid();
+        pdfBodyGrid.Style.CellPadding.Left = cellMargin;
+        pdfBodyGrid.Style.CellPadding.Right = cellMargin;
+
+
+        List<object> bodydata = new List<object>();
+        Object BodyRow1 = new{Product=OrderData.Product,Brand=OrderData.Brand,Accessory=OrderData.Accessory,Price="$"+OrderData.Price};
+        bodydata.Add(BodyRow1);      
+        
+        IEnumerable<object> bodyTable = bodydata;
+             
+        pdfBodyGrid.ApplyBuiltinStyle(PdfGridBuiltinStyle.GridTable4Accent1);
+        pdfBodyGrid.DataSource = bodydata;
+        pdfBodyGrid.Draw(page, new Syncfusion.Drawing.PointF(15, 200));  
+
+
+
+        PdfGrid pdfDownBodyGrid = new PdfGrid();
+        pdfDownBodyGrid.Style.CellPadding.Left = cellMargin;
+        pdfDownBodyGrid.Style.CellPadding.Right = cellMargin;
+
+
+        List<object> downbodydata = new List<object>();
+        Object DownBodyRow1 = new{Status=OrderData.Status,Service=OrderData.Service,Comments=OrderData.Comments};
+        downbodydata.Add(DownBodyRow1);      
+        
+        IEnumerable<object> DownBodyTable = downbodydata;
+             
+        pdfDownBodyGrid.ApplyBuiltinStyle(PdfGridBuiltinStyle.GridTable4Accent1);
+        pdfDownBodyGrid.DataSource = downbodydata;
+        pdfDownBodyGrid.Draw(page, new Syncfusion.Drawing.PointF(300, 300));  
+
+
+        PdfGrid pdfFooterGrid = new PdfGrid();
+        pdfFooterGrid.Style.CellPadding.Left = cellMargin;
+        pdfFooterGrid.Style.CellPadding.Right = cellMargin;
+        double FinalPrice = OrderData.Price*1.13;
+        List<object> footerdata = new List<object>();
+        Object footerRow1 = new{Tax_Rate="13%",Total="$"+FinalPrice.ToString("0.00")};
+        footerdata.Add(footerRow1);
+        IEnumerable<object> footerTable = footerdata;
+        pdfFooterGrid.ApplyBuiltinStyle(PdfGridBuiltinStyle.GridTable4Accent1);
+        pdfFooterGrid.DataSource = footerdata;
+        pdfFooterGrid.Draw(page, new Syncfusion.Drawing.PointF(350, 500));  
+
+
+        PdfTextElement footerText = new PdfTextElement("Thank You",font3, PdfBrushes.Black);
+        PdfLayoutResult result5 = footerText.Draw(page, new PointF(0, 500));
+        PdfTextElement footerText2 = new PdfTextElement("HST/GST No: 812334530",font3, PdfBrushes.Black);
+        PdfLayoutResult result6 = footerText2.Draw(page, new PointF(0, 520));
+
+        MemoryStream memoryStream = new MemoryStream();
+
+        // Save the PDF document.
+        pdfDocument.Save(memoryStream);
+
+        // Download the PDF document
+        JS.SaveAs("Sample.pdf", memoryStream.ToArray());
+
+    }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private Microsoft.JSInterop.IJSRuntime JS { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime JsRuntime { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager UriHelper { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavManager { get; set; }

@@ -161,7 +161,7 @@ using Microsoft.AspNetCore.Authorization;
             __builder.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(20);
             __builder.AddAttribute(21, "class", "nav-link");
             __builder.AddAttribute(22, "href", "Users");
-            __builder.AddAttribute(23, "Match", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.Routing.NavLinkMatch>(
+            __builder.AddAttribute(23, "Match", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.Routing.NavLinkMatch>(
 #nullable restore
 #line 11 "/Users/yassa/TikTechCRM/Shared/NavMenu.razor"
                                                           NavLinkMatch.All
@@ -222,7 +222,7 @@ using Microsoft.AspNetCore.Authorization;
             __builder.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(57);
             __builder.AddAttribute(58, "class", "nav-link");
             __builder.AddAttribute(59, "href", "Clients");
-            __builder.AddAttribute(60, "Match", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.Routing.NavLinkMatch>(
+            __builder.AddAttribute(60, "Match", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.Routing.NavLinkMatch>(
 #nullable restore
 #line 31 "/Users/yassa/TikTechCRM/Shared/NavMenu.razor"
                                                             NavLinkMatch.All
@@ -244,7 +244,7 @@ using Microsoft.AspNetCore.Authorization;
             __builder.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(67);
             __builder.AddAttribute(68, "class", "nav-link");
             __builder.AddAttribute(69, "href", "");
-            __builder.AddAttribute(70, "Match", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.Routing.NavLinkMatch>(
+            __builder.AddAttribute(70, "Match", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.Routing.NavLinkMatch>(
 #nullable restore
 #line 36 "/Users/yassa/TikTechCRM/Shared/NavMenu.razor"
                                                      NavLinkMatch.All

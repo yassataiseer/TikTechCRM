@@ -65,7 +65,7 @@
     private dynamic validate;
     public async void HandleValidSubmit(){
         using var client = new HttpClient();
-        var result = await client.GetStringAsync("http://0.0.0.0:800/Clients/update_Client/"+ClientFormModel.Username+"/"+ClientFormModel.Address+"/"+ClientFormModel.Postal_code+"/"+ClientFormModel.Email+"/"+ClientFormModel.Phone_Number+"/"+Id.ToString());
+        var result = await client.GetStringAsync("https://ticktechapi.pythonanywhere.com/Clients/update_Client/"+ClientFormModel.Username+"/"+ClientFormModel.Address+"/"+ClientFormModel.Postal_code+"/"+ClientFormModel.Email+"/"+ClientFormModel.Phone_Number+"/"+Id.ToString());
         // /update_Client/<string:Name>/<string:Address>/<string:Postal_code>/<string:Email>/<string:Phone_number>/<int:id>
         dynamic data = JObject.Parse(result);
         Console.WriteLine(data.Status);

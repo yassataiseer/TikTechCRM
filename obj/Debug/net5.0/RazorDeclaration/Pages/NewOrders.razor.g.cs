@@ -165,7 +165,7 @@ using System;
         string date = OrderForm.Add_date.ToString();
         date = date.Replace('/', '-');
         Console.WriteLine(date);
-        var result = await client.GetStringAsync("http://0.0.0.0:800/Orders/mk_Order/"+OrderForm.Client+"/"+OrderForm.Employee+"/"+OrderForm.Product+"/"+OrderForm.Brand+"/"+OrderForm.Accessory+"/"+OrderForm.Price.ToString("0.00")+"/"+OrderForm.Status+"/"+OrderForm.Service+"/"+OrderForm.Comments+"/"+date);
+        var result = await client.GetStringAsync("https://ticktechapi.pythonanywhere.com/Orders/mk_Order/"+OrderForm.Client+"/"+OrderForm.Employee+"/"+OrderForm.Product+"/"+OrderForm.Brand+"/"+OrderForm.Accessory+"/"+OrderForm.Price.ToString("0.00")+"/"+OrderForm.Status+"/"+OrderForm.Service+"/"+OrderForm.Comments+"/"+date);
         // /<string:Product>/<string:Brand>/<string:Accessory>/<float:Amount>/<string:Status>/<string:Service>/<string:Comments>/<string:Add_date>
         dynamic data = JObject.Parse(result);
         Console.WriteLine(data.Status);
@@ -182,7 +182,7 @@ using System;
        string value = (string)validate;
 
         using var client = new HttpClient();
-        var result = await client.GetStringAsync("http://0.0.0.0:800/Clients/all_Clients");
+        var result = await client.GetStringAsync("https://ticktechapi.pythonanywhere.com/Clients/all_Clients");
 
         JArray data = JArray.Parse(result);
         foreach (dynamic obj in data){
@@ -196,7 +196,7 @@ using System;
                     Username = obj.Username
             });
             }
-        result = await client.GetStringAsync("http://0.0.0.0:800/Users/grab_users");
+        result = await client.GetStringAsync("https://ticktechapi.pythonanywhere.com/Users/grab_users");
 
         data = JArray.Parse(result);
         foreach (dynamic obj in data){
@@ -206,7 +206,7 @@ using System;
             });
             }
 
-        result = await client.GetStringAsync("http://0.0.0.0:800/Services/all_Services");
+        result = await client.GetStringAsync("https://ticktechapi.pythonanywhere.com/Services/all_Services");
 
         data = JArray.Parse(result);
         foreach (dynamic obj in data){
