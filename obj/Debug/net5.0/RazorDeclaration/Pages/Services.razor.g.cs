@@ -181,7 +181,7 @@ using Newtonsoft.Json;
         NavManager.NavigateTo("/Services",true); 
     }
     private void EditRedirect(string Service_name, string Service_purpose, double Service_cost){
-         NavManager.NavigateTo("/editservice/"+Service_name+"/"+Service_purpose+"/"+Service_cost.ToString(),true); 
+         NavManager.NavigateTo("/editservice/"+Service_name+"/"+Service_cost.ToString("0.00")+"/"+Service_purpose,true); 
     }
 
 #line default

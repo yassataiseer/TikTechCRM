@@ -147,7 +147,7 @@ using Newtonsoft.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 39 "/Users/yassa/TikTechCRM/Pages/EditUser.razor"
+#line 40 "/Users/yassa/TikTechCRM/Pages/EditUser.razor"
 
     public EditLoginModel EditLoginModel = new();
 
@@ -156,13 +156,10 @@ using Newtonsoft.Json;
     [Parameter]
     
     public string Password{ get; set; }
-    private dynamic validate;
+    public Validate Validate;
     public async void HandleValidSubmit(){
-        using var client = new HttpClient();
-        var result = await client.GetStringAsync("https://ticktechapi.pythonanywhere.com/Users/update_user/"+Username+"/"+EditLoginModel.Password);
-        dynamic data = JObject.Parse(result);
-        Console.WriteLine(data.Status);
-        if (data.Status=="true"){         
+        Validate = await Http.GetFromJsonAsync<Validate>("https://ticktechapi.pythonanywhere.com/Users/update_user/"+Username+"/"+EditLoginModel.Password);
+        if (Validate.Status){         
             NavManager.NavigateTo("/Users",true); 
         } 
         else {
@@ -170,7 +167,8 @@ using Newtonsoft.Json;
         }
     }
     protected override async Task OnInitializedAsync(){
-        validate =  await JsRuntime.InvokeAsync<string>("BlazorGetLocalStorage","Username:");
+       dynamic validate;
+       validate =  await JsRuntime.InvokeAsync<string>("BlazorGetLocalStorage","Username:");
        string value = (string)validate;
        EditLoginModel.Password = Password;
        if(value==null){
@@ -182,6 +180,7 @@ using Newtonsoft.Json;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient Http { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime JsRuntime { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager UriHelper { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavManager { get; set; }

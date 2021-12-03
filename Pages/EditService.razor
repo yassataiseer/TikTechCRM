@@ -1,4 +1,4 @@
-@page "/editservice/{Service_name}/{Service_purpose}/{Service_cost}"
+@page "/editservice/{Service_name}/{Service_cost}/{Service_purpose}"
 
 <!DOCTYPE html>
 <html>
@@ -39,7 +39,7 @@
     @inject NavigationManager NavManager
     @inject NavigationManager UriHelper
     @inject IJSRuntime JsRuntime;
-
+    @inject HttpClient Http;
     public EditServiceModel EditServiceModel = new();
     [Parameter]
     public string Service_name { get; set; }
@@ -47,14 +47,13 @@
     public string Service_purpose{ get; set; }
     [Parameter]
     public string Service_cost{ get; set; }
-    private dynamic validate;
 
+
+
+    public Validate Validate;
     public async void HandleValidSubmit(){
-        using var client = new HttpClient();
-        var result = await client.GetStringAsync("https://ticktechapi.pythonanywhere.com/Services/update_Services/"+Service_name+"/"+EditServiceModel.Service_purpose+"/"+EditServiceModel.Service_cost.ToString("0.0"));
-        dynamic data = JObject.Parse(result);
-        Console.WriteLine(data.Status);
-        if (data.Status=="true"){         
+        Validate =  await Http.GetFromJsonAsync<Validate>("https://ticktechapi.pythonanywhere.com/Services/update_Services/"+Service_name+"/"+EditServiceModel.Service_purpose+"/"+EditServiceModel.Service_cost.ToString("0.00"));
+        if (Validate.Status){         
             NavManager.NavigateTo("/services",true); 
         } 
         else {
@@ -62,7 +61,8 @@
         }
     }
     protected override async Task OnInitializedAsync(){
-        validate =  await JsRuntime.InvokeAsync<string>("BlazorGetLocalStorage","Username:");
+       dynamic validate;
+       validate =  await JsRuntime.InvokeAsync<string>("BlazorGetLocalStorage","Username:");
        string value = (string)validate;
        EditServiceModel.Service_cost = Convert.ToDouble(Service_cost);
        EditServiceModel.Service_purpose = Service_purpose;

@@ -147,18 +147,13 @@ using Newtonsoft.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 41 "/Users/yassa/TikTechCRM/Pages/NewService.razor"
-    private dynamic validate;
+#line 42 "/Users/yassa/TikTechCRM/Pages/NewService.razor"
     private ServiceFormModel ServiceFormModel = new();
-
+    public Validate Validate;
     private async void  HandleValidSubmit()
     {
-        using var client = new HttpClient();
-        Console.WriteLine(ServiceFormModel.Service_cost.ToString("0.00"));
-        var result = await client.GetStringAsync("https://ticktechapi.pythonanywhere.com/Services/mk_Service/"+ServiceFormModel.Service_name+"/"+ServiceFormModel.Service_purpose+"/"+ServiceFormModel.Service_cost.ToString("0.00"));
-        dynamic data = JObject.Parse(result);
-        Console.WriteLine(data.Status);
-        if (data.Status=="true"){
+        Validate = await Http.GetFromJsonAsync<Validate>("https://ticktechapi.pythonanywhere.com/Services/mk_Service/"+ServiceFormModel.Service_name+"/"+ServiceFormModel.Service_purpose+"/"+ServiceFormModel.Service_cost.ToString("0.00"));
+        if (Validate.Status){
             NavManager.NavigateTo("/services",true); 
         } 
         else {
@@ -170,6 +165,7 @@ using Newtonsoft.Json;
     }
 
     protected override async Task OnInitializedAsync(){
+        dynamic validate;
         validate =  await JsRuntime.InvokeAsync<string>("BlazorGetLocalStorage","Username:");
        string value = (string)validate;
        
@@ -181,6 +177,7 @@ using Newtonsoft.Json;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient Http { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime JsRuntime { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager UriHelper { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavManager { get; set; }

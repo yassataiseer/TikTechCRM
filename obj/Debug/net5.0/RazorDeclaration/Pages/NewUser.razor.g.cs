@@ -154,7 +154,6 @@ using Newtonsoft.Json;
 
     private async void  HandleValidSubmit()
     {
-        using var client = new HttpClient();
         Validate = await Http.GetFromJsonAsync<Validate>("https://ticktechapi.pythonanywhere.com/Users/mk_user/"+LoginModel.UserName+"/"+LoginModel.Password);
 
         if (Validate.Status){

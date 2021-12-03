@@ -138,7 +138,7 @@ using Newtonsoft.Json;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/editservice/{Service_name}/{Service_purpose}/{Service_cost}")]
+    [Microsoft.AspNetCore.Components.RouteAttribute("/editservice/{Service_name}/{Service_cost}/{Service_purpose}")]
     public partial class EditService : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -147,8 +147,7 @@ using Newtonsoft.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 42 "/Users/yassa/TikTechCRM/Pages/EditService.razor"
-
+#line 43 "/Users/yassa/TikTechCRM/Pages/EditService.razor"
     public EditServiceModel EditServiceModel = new();
     [Parameter]
     public string Service_name { get; set; }
@@ -156,14 +155,13 @@ using Newtonsoft.Json;
     public string Service_purpose{ get; set; }
     [Parameter]
     public string Service_cost{ get; set; }
-    private dynamic validate;
 
+
+
+    public Validate Validate;
     public async void HandleValidSubmit(){
-        using var client = new HttpClient();
-        var result = await client.GetStringAsync("https://ticktechapi.pythonanywhere.com/Services/update_Services/"+Service_name+"/"+EditServiceModel.Service_purpose+"/"+EditServiceModel.Service_cost.ToString("0.0"));
-        dynamic data = JObject.Parse(result);
-        Console.WriteLine(data.Status);
-        if (data.Status=="true"){         
+        Validate =  await Http.GetFromJsonAsync<Validate>("https://ticktechapi.pythonanywhere.com/Services/update_Services/"+Service_name+"/"+EditServiceModel.Service_purpose+"/"+EditServiceModel.Service_cost.ToString("0.00"));
+        if (Validate.Status){         
             NavManager.NavigateTo("/services",true); 
         } 
         else {
@@ -171,7 +169,8 @@ using Newtonsoft.Json;
         }
     }
     protected override async Task OnInitializedAsync(){
-        validate =  await JsRuntime.InvokeAsync<string>("BlazorGetLocalStorage","Username:");
+       dynamic validate;
+       validate =  await JsRuntime.InvokeAsync<string>("BlazorGetLocalStorage","Username:");
        string value = (string)validate;
        EditServiceModel.Service_cost = Convert.ToDouble(Service_cost);
        EditServiceModel.Service_purpose = Service_purpose;
@@ -184,6 +183,7 @@ using Newtonsoft.Json;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient Http { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime JsRuntime { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager UriHelper { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavManager { get; set; }
