@@ -435,39 +435,6 @@
         }
       },
       {
-        "HashCode": 1982762358,
-        "Kind": "Components.Component",
-        "Name": "TikTechCRM.Pages.NewOrders",
-        "AssemblyName": "TikTechCRM",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "NewOrders"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TikTechCRM.Pages.NewOrders"
-        }
-      },
-      {
-        "HashCode": 1181155778,
-        "Kind": "Components.Component",
-        "Name": "TikTechCRM.Pages.NewOrders",
-        "AssemblyName": "TikTechCRM",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "TikTechCRM.Pages.NewOrders"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TikTechCRM.Pages.NewOrders",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": 838557574,
         "Kind": "Components.Component",
         "Name": "TikTechCRM.Pages.EditInventory",
@@ -618,39 +585,6 @@
         }
       },
       {
-        "HashCode": -883921601,
-        "Kind": "Components.Component",
-        "Name": "TikTechCRM.Pages.NewUser",
-        "AssemblyName": "TikTechCRM",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "NewUser"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TikTechCRM.Pages.NewUser"
-        }
-      },
-      {
-        "HashCode": 1474247466,
-        "Kind": "Components.Component",
-        "Name": "TikTechCRM.Pages.NewUser",
-        "AssemblyName": "TikTechCRM",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "TikTechCRM.Pages.NewUser"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TikTechCRM.Pages.NewUser",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": 1433934379,
         "Kind": "Components.Component",
         "Name": "TikTechCRM.Pages.EditUser",
@@ -720,6 +654,39 @@
         }
       },
       {
+        "HashCode": -502748626,
+        "Kind": "Components.Component",
+        "Name": "TikTechCRM.Pages.Services",
+        "AssemblyName": "TikTechCRM",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Services"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TikTechCRM.Pages.Services"
+        }
+      },
+      {
+        "HashCode": 752585116,
+        "Kind": "Components.Component",
+        "Name": "TikTechCRM.Pages.Services",
+        "AssemblyName": "TikTechCRM",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "TikTechCRM.Pages.Services"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TikTechCRM.Pages.Services",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": 1989273170,
         "Kind": "Components.Component",
         "Name": "TikTechCRM.Pages.Orders",
@@ -749,6 +716,190 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "TikTechCRM.Pages.Orders",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 2118161294,
+        "Kind": "Components.Component",
+        "Name": "TikTechCRM.Pages.NewService",
+        "AssemblyName": "TikTechCRM",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "NewService"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TikTechCRM.Pages.NewService"
+        }
+      },
+      {
+        "HashCode": -1473995791,
+        "Kind": "Components.Component",
+        "Name": "TikTechCRM.Pages.NewService",
+        "AssemblyName": "TikTechCRM",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "TikTechCRM.Pages.NewService"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TikTechCRM.Pages.NewService",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -883921601,
+        "Kind": "Components.Component",
+        "Name": "TikTechCRM.Pages.NewUser",
+        "AssemblyName": "TikTechCRM",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "NewUser"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TikTechCRM.Pages.NewUser"
+        }
+      },
+      {
+        "HashCode": 1474247466,
+        "Kind": "Components.Component",
+        "Name": "TikTechCRM.Pages.NewUser",
+        "AssemblyName": "TikTechCRM",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "TikTechCRM.Pages.NewUser"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TikTechCRM.Pages.NewUser",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 1138843736,
+        "Kind": "Components.Component",
+        "Name": "TikTechCRM.Pages.EditService",
+        "AssemblyName": "TikTechCRM",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "EditService"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Service_name",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Service_name"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "Service_purpose",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Service_purpose"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "Service_cost",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Service_cost"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TikTechCRM.Pages.EditService"
+        }
+      },
+      {
+        "HashCode": 659500405,
+        "Kind": "Components.Component",
+        "Name": "TikTechCRM.Pages.EditService",
+        "AssemblyName": "TikTechCRM",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "TikTechCRM.Pages.EditService"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Service_name",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Service_name"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "Service_purpose",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Service_purpose"
+            }
+          },
+          {
+            "Kind": "Components.Component",
+            "Name": "Service_cost",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Service_cost"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TikTechCRM.Pages.EditService",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 1982762358,
+        "Kind": "Components.Component",
+        "Name": "TikTechCRM.Pages.NewOrders",
+        "AssemblyName": "TikTechCRM",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "NewOrders"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TikTechCRM.Pages.NewOrders"
+        }
+      },
+      {
+        "HashCode": 1181155778,
+        "Kind": "Components.Component",
+        "Name": "TikTechCRM.Pages.NewOrders",
+        "AssemblyName": "TikTechCRM",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "TikTechCRM.Pages.NewOrders"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TikTechCRM.Pages.NewOrders",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -946,157 +1097,6 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "TikTechCRM.Pages.EditOrder",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 2118161294,
-        "Kind": "Components.Component",
-        "Name": "TikTechCRM.Pages.NewService",
-        "AssemblyName": "TikTechCRM",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "NewService"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TikTechCRM.Pages.NewService"
-        }
-      },
-      {
-        "HashCode": -1473995791,
-        "Kind": "Components.Component",
-        "Name": "TikTechCRM.Pages.NewService",
-        "AssemblyName": "TikTechCRM",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "TikTechCRM.Pages.NewService"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TikTechCRM.Pages.NewService",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -502748626,
-        "Kind": "Components.Component",
-        "Name": "TikTechCRM.Pages.Services",
-        "AssemblyName": "TikTechCRM",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Services"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TikTechCRM.Pages.Services"
-        }
-      },
-      {
-        "HashCode": 752585116,
-        "Kind": "Components.Component",
-        "Name": "TikTechCRM.Pages.Services",
-        "AssemblyName": "TikTechCRM",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "TikTechCRM.Pages.Services"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TikTechCRM.Pages.Services",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 1138843736,
-        "Kind": "Components.Component",
-        "Name": "TikTechCRM.Pages.EditService",
-        "AssemblyName": "TikTechCRM",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "EditService"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Service_name",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Service_name"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "Service_purpose",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Service_purpose"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "Service_cost",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Service_cost"
-            }
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TikTechCRM.Pages.EditService"
-        }
-      },
-      {
-        "HashCode": 659500405,
-        "Kind": "Components.Component",
-        "Name": "TikTechCRM.Pages.EditService",
-        "AssemblyName": "TikTechCRM",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "TikTechCRM.Pages.EditService"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Service_name",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Service_name"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "Service_purpose",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Service_purpose"
-            }
-          },
-          {
-            "Kind": "Components.Component",
-            "Name": "Service_cost",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Service_cost"
-            }
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TikTechCRM.Pages.EditService",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },

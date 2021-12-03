@@ -86,23 +86,22 @@
     @inject NavigationManager NavManager
     @inject NavigationManager UriHelper
     @using System
+    @inject HttpClient Http;
     @inject IJSRuntime JsRuntime;
-    private dynamic validate;
     public OrderForm OrderForm = new();
     public List<ClientModel> ClientData = new();
     public List<UsersModel> UserData = new();
     private List<ServiceModel> ServiceData = new();
+
+   public Validate Validate;
+
     private async void  HandleValidSubmit()
     {
-        using var client = new HttpClient();
         string date = OrderForm.Add_date.ToString();
         date = date.Replace('/', '-');
-        Console.WriteLine(date);
-        var result = await client.GetStringAsync("https://ticktechapi.pythonanywhere.com/Orders/mk_Order/"+OrderForm.Client+"/"+OrderForm.Employee+"/"+OrderForm.Product+"/"+OrderForm.Brand+"/"+OrderForm.Accessory+"/"+OrderForm.Price.ToString("0.00")+"/"+OrderForm.Status+"/"+OrderForm.Service+"/"+OrderForm.Comments+"/"+date);
+        Validate =  await Http.GetFromJsonAsync<Validate>("https://ticktechapi.pythonanywhere.com/Orders/mk_Order/"+OrderForm.Client+"/"+OrderForm.Employee+"/"+OrderForm.Product+"/"+OrderForm.Brand+"/"+OrderForm.Accessory+"/"+OrderForm.Price.ToString("0.00")+"/"+OrderForm.Status+"/"+OrderForm.Service+"/"+OrderForm.Comments+"/"+date);
         // /<string:Product>/<string:Brand>/<string:Accessory>/<float:Amount>/<string:Status>/<string:Service>/<string:Comments>/<string:Add_date>
-        dynamic data = JObject.Parse(result);
-        Console.WriteLine(data.Status);
-        if (data.Status=="true"){
+        if (Validate.Status){
             NavManager.NavigateTo("/orders",true); 
         } 
         else {
@@ -111,6 +110,7 @@
     }
 
     protected override async Task OnInitializedAsync(){
+        dynamic validate;
         validate =  await JsRuntime.InvokeAsync<string>("BlazorGetLocalStorage","Username:");
        string value = (string)validate;
 

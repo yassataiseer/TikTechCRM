@@ -84,11 +84,11 @@
     @using System.IO;
     @using BlazorPdfExport.Data;
 @code{
-    private dynamic validate;
     private List<OrderModel> OrderData = new();
 
 
     protected override async Task OnInitializedAsync(){
+        dynamic validate;
         validate =  await JsRuntime.InvokeAsync<string>("BlazorGetLocalStorage","Username:");
        string value = (string)validate;
        if(value==null){

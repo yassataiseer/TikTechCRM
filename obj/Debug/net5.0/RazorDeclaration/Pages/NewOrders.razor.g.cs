@@ -153,23 +153,21 @@ using System;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 90 "/Users/yassa/TikTechCRM/Pages/NewOrders.razor"
-    private dynamic validate;
+#line 91 "/Users/yassa/TikTechCRM/Pages/NewOrders.razor"
     public OrderForm OrderForm = new();
     public List<ClientModel> ClientData = new();
     public List<UsersModel> UserData = new();
     private List<ServiceModel> ServiceData = new();
+
+   public Validate Validate;
+
     private async void  HandleValidSubmit()
     {
-        using var client = new HttpClient();
         string date = OrderForm.Add_date.ToString();
         date = date.Replace('/', '-');
-        Console.WriteLine(date);
-        var result = await client.GetStringAsync("https://ticktechapi.pythonanywhere.com/Orders/mk_Order/"+OrderForm.Client+"/"+OrderForm.Employee+"/"+OrderForm.Product+"/"+OrderForm.Brand+"/"+OrderForm.Accessory+"/"+OrderForm.Price.ToString("0.00")+"/"+OrderForm.Status+"/"+OrderForm.Service+"/"+OrderForm.Comments+"/"+date);
+        Validate =  await Http.GetFromJsonAsync<Validate>("https://ticktechapi.pythonanywhere.com/Orders/mk_Order/"+OrderForm.Client+"/"+OrderForm.Employee+"/"+OrderForm.Product+"/"+OrderForm.Brand+"/"+OrderForm.Accessory+"/"+OrderForm.Price.ToString("0.00")+"/"+OrderForm.Status+"/"+OrderForm.Service+"/"+OrderForm.Comments+"/"+date);
         // /<string:Product>/<string:Brand>/<string:Accessory>/<float:Amount>/<string:Status>/<string:Service>/<string:Comments>/<string:Add_date>
-        dynamic data = JObject.Parse(result);
-        Console.WriteLine(data.Status);
-        if (data.Status=="true"){
+        if (Validate.Status){
             NavManager.NavigateTo("/orders",true); 
         } 
         else {
@@ -178,6 +176,7 @@ using System;
     }
 
     protected override async Task OnInitializedAsync(){
+        dynamic validate;
         validate =  await JsRuntime.InvokeAsync<string>("BlazorGetLocalStorage","Username:");
        string value = (string)validate;
 
@@ -228,6 +227,7 @@ using System;
 #line hidden
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime JsRuntime { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient Http { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager UriHelper { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavManager { get; set; }
     }

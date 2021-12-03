@@ -191,11 +191,11 @@ using BlazorPdfExport.Data;
 #nullable restore
 #line 86 "/Users/yassa/TikTechCRM/Pages/Orders.razor"
       
-    private dynamic validate;
     private List<OrderModel> OrderData = new();
 
 
     protected override async Task OnInitializedAsync(){
+        dynamic validate;
         validate =  await JsRuntime.InvokeAsync<string>("BlazorGetLocalStorage","Username:");
        string value = (string)validate;
        if(value==null){
