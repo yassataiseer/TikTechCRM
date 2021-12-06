@@ -147,17 +147,14 @@ using Newtonsoft.Json;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 53 "/Users/yassa/TikTechCRM/Pages/NewInventory.razor"
-    private dynamic validate;
-    private InventoryFormModel InventoryFormModel = new();
-
+#line 54 "/Users/yassa/TikTechCRM/Pages/NewInventory.razor"
+     private InventoryFormModel InventoryFormModel = new();
+    public Validate Validate = new();
     private async void  HandleValidSubmit()
     {
         using var client = new HttpClient();
-        var result = await client.GetStringAsync("https://ticktechapi.pythonanywhere.com/Inventory/mk_Inventory/"+InventoryFormModel.Item+"/"+InventoryFormModel.Barcode+"/"+InventoryFormModel.Price.ToString("0.00")+"/"+InventoryFormModel.Quantity+"/"+InventoryFormModel.Status);
-        dynamic data = JObject.Parse(result);
-        Console.WriteLine(data.Status);
-        if (data.Status=="true"){
+        var result = await Http.GetFromJsonAsync<Validate>("https://ticktechapi.pythonanywhere.com/Inventory/mk_Inventory/"+InventoryFormModel.Item+"/"+InventoryFormModel.Barcode+"/"+InventoryFormModel.Price.ToString("0.00")+"/"+InventoryFormModel.Quantity+"/"+InventoryFormModel.Status);
+        if (result.Status){
             NavManager.NavigateTo("/inventory",true); 
         } 
         else {
@@ -166,6 +163,7 @@ using Newtonsoft.Json;
     }
 
     protected override async Task OnInitializedAsync(){
+        dynamic validate;
         validate =  await JsRuntime.InvokeAsync<string>("BlazorGetLocalStorage","Username:");
        string value = (string)validate;
        
@@ -178,6 +176,7 @@ using Newtonsoft.Json;
 #line hidden
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime JsRuntime { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient Http { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager UriHelper { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavManager { get; set; }
     }

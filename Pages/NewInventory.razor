@@ -49,17 +49,15 @@
     @using Newtonsoft.Json
     @inject NavigationManager NavManager
     @inject NavigationManager UriHelper
+    @inject HttpClient Http;
     @inject IJSRuntime JsRuntime;
-    private dynamic validate;
-    private InventoryFormModel InventoryFormModel = new();
-
+     private InventoryFormModel InventoryFormModel = new();
+    public Validate Validate = new();
     private async void  HandleValidSubmit()
     {
         using var client = new HttpClient();
-        var result = await client.GetStringAsync("https://ticktechapi.pythonanywhere.com/Inventory/mk_Inventory/"+InventoryFormModel.Item+"/"+InventoryFormModel.Barcode+"/"+InventoryFormModel.Price.ToString("0.00")+"/"+InventoryFormModel.Quantity+"/"+InventoryFormModel.Status);
-        dynamic data = JObject.Parse(result);
-        Console.WriteLine(data.Status);
-        if (data.Status=="true"){
+        var result = await Http.GetFromJsonAsync<Validate>("https://ticktechapi.pythonanywhere.com/Inventory/mk_Inventory/"+InventoryFormModel.Item+"/"+InventoryFormModel.Barcode+"/"+InventoryFormModel.Price.ToString("0.00")+"/"+InventoryFormModel.Quantity+"/"+InventoryFormModel.Status);
+        if (result.Status){
             NavManager.NavigateTo("/inventory",true); 
         } 
         else {
@@ -68,6 +66,7 @@
     }
 
     protected override async Task OnInitializedAsync(){
+        dynamic validate;
         validate =  await JsRuntime.InvokeAsync<string>("BlazorGetLocalStorage","Username:");
        string value = (string)validate;
        
