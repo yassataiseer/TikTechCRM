@@ -172,7 +172,6 @@ using Newtonsoft.Json;
                     Postal_code = obj.Postal_code,
                     Username = obj.Username
             });
-            Console.WriteLine(obj.Deleted);
         }
        
         StateHasChanged();

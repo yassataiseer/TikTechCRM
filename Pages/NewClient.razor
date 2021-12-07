@@ -46,16 +46,15 @@
     @inject NavigationManager NavManager
     @inject NavigationManager UriHelper
     @inject IJSRuntime JsRuntime;
-    private dynamic validate;
+    @inject HttpClient Http;
     private ClientFormModel ClientFormModel = new();
+    public Validate Validate;
 
     private async void  HandleValidSubmit()
     {
-        using var client = new HttpClient();
-        var result = await client.GetStringAsync("https://ticktechapi.pythonanywhere.com/Clients/mk_Client/"+ClientFormModel.Username+"/"+ClientFormModel.Address+"/"+ClientFormModel.Postal_code+"/"+ClientFormModel.Email+"/"+ClientFormModel.Phone_Number.ToString());
-        dynamic data = JObject.Parse(result);
-        Console.WriteLine(data.Status);
-        if (data.Status=="true"){
+        
+        Validate = await Http.GetFromJsonAsync<Validate>("https://ticktechapi.pythonanywhere.com/Clients/mk_Client/"+ClientFormModel.Username+"/"+ClientFormModel.Address+"/"+ClientFormModel.Postal_code+"/"+ClientFormModel.Email+"/"+ClientFormModel.Phone_Number.ToString());
+        if (Validate.Status){
             NavManager.NavigateTo("/Clients",true); 
         } 
         else {
@@ -64,6 +63,7 @@
     }
 
     protected override async Task OnInitializedAsync(){
+        dynamic validate;
         validate =  await JsRuntime.InvokeAsync<string>("BlazorGetLocalStorage","Username:");
        string value = (string)validate;
        
