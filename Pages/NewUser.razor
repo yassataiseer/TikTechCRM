@@ -12,10 +12,10 @@
 <EditForm Model="@LoginModel" OnValidSubmit="@HandleValidSubmit" autocomplete="off">
     <DataAnnotationsValidator />
     <h4>Username:</h4>
-    <InputText autocomplete=False type="text" id="UserName" @bind-Value="LoginModel.UserName" />
+    <InputText autocomplete="off" type="text" id="UserName" @bind-Value="LoginModel.UserName" />
     <br>
     <h4>Password:</h4>
-    <InputText autocomplete=False type="password" id="Password" @bind-Value="LoginModel.Password" />
+    <InputText autocomplete="off" type="password" id="Password" @bind-Value="LoginModel.Password" />
     <br>
     <br>
     <button type="submit" class="btn btn-primary">Submit</button> 
