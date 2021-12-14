@@ -149,7 +149,6 @@ using Newtonsoft.Json;
 #nullable restore
 #line 40 "/Users/yassa/TikTechCRM/Pages/NewUser.razor"
     public Validate Validate;
-
     private LoginModel LoginModel = new();
 
     private async void  HandleValidSubmit()
