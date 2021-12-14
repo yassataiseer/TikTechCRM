@@ -9,7 +9,7 @@
 </head>
 <div class="card">
 <div class="container">
-<EditForm Model="@LoginModel" OnValidSubmit="@HandleValidSubmit">
+<EditForm Model="@LoginModel" OnValidSubmit="@HandleValidSubmit" autocomplete="off">
     <DataAnnotationsValidator />
     <h4>Username:</h4>
     <InputText type="text" id="UserName" @bind-Value="LoginModel.UserName" />
